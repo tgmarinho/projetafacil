@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:th="http://www.thymeleaf.org"
+    xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+    layout:decorate="~{layout/LayoutPadrao}"
+    xmlns:brewer="http://brewer.algaworks.com"
+	xmlns:data="http://www.thymeleaf.org/extras/data">
+    
+<head>
+	<title>Pesquisa de Orçamentos</title>
+</head>
+
+<section layout:fragment="conteudo">
+	<div class="page-header">
+		<div class="container-fluid">
+			<div class="row">
+				<div class="col-sm-10">
+					<h1>Pesquisa de Orçamentos</h1>
+				</div>
+				
+				<div class="col-sm-2">
+					<div class="aw-page-header-controls">
+						<a class="btn  btn-default" th:href="@{orcamentos/novo}">
+							<i class="glyphicon  glyphicon-plus-sign"></i> <span class="hidden-xs  hidden-sm">Novo Orçamento</span>
+						</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+		   	
+	  <div class="container-fluid">
+		<form method="GET" th:object="${orcamentoFilter}">
+			<div class="row">
+				<div class="form-group col-sm-12">
+					<input type="text" class="form-control" id="etapa" placeholder="Qual Orçamento você está procurando?" autofocus="autofocus" th:field="*{descricao}"/>
+				</div>
+			</div>
+			
+			<button type="submit" class="btn  btn-primary">Pesquisar</button>
+		</form>
+	   		
+	   	<div class="table-responsive  bw-tabela-simples">
+			<table class="table  table-hover">
+		   			<thead>
+		   				<tr>
+		   					<th>#</th>
+		   					<th>Descrição</th>
+		   					<th>Valor Total</th>
+		   					<th class="table-col-acoes"></th>
+		   				</tr>
+		   			</thead>
+		   			<tbody>
+		   				<tr th:each="orcamento : ${pagina.conteudo}">
+		   					<td th:text="${orcamento.id}">1</td>
+		   					<td th:text="${orcamento.descricao}">1</td>
+		   					<td th:text="|R$ ${{orcamento.precoTotal}}|">R$ 1.000,00</td>
+		   					<td class="text-center">
+		   						<a class="btn btn-link btn-xs" th:href="@{/orcamentos/{id}(id=${orcamento.id})}" 
+		   								title="Editar" rel="tooltip" data-placement="top">
+		   							<span class="glyphicon glyphicon-pencil"></span>
+		   						</a>
+		   							<a class="btn  btn-link  btn-xs  js-tooltip  js-exclusao-btn" title="Excluir" href="#" 
+									data:url="@{/orcamentos/{id}(id=${orcamento.id})}"
+									data:objeto="teste">
+									<i class="glyphicon glyphicon-remove"></i>
+								</a>
+		   					</td>
+		   				</tr>
+		   				<tr th:if="${pagina.vazia}">
+							<td colspan="4">Nenhum Orçamento encontrado</td>
+						</tr>
+		   			</tbody>
+		   		</table>
+		   	</div>
+		   	
+		   	<brewer:pagination page="${pagina}"/>
+		   	
+	   	</div>
+	   	
+</section>
+</html>

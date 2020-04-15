@@ -1,0 +1,8 @@
+
+
+select * from insumo where unidade in ('H','MES');
+
+
+
+update insumo set tipo='MATERIAL';
+update insumo set tipo='MAODEOBRA' where unidade  in ('H','MES');

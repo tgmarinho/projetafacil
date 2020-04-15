@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="pt" xmlns="http://www.w3.org/1999/xhtml" 
+	  xmlns:th="http://www.thymeleaf.org" 
+	  xmlns:data="http://www.thymeleaf.org/extras/data">
+
+<!-- Serviços -->
+<div class="table-responsive bw-tabela-simples js-tabela-item-detalhe-material">
+	<table id="detalhe-material-table" th:name="detalhe-material-table" class="table  table-hover table-striped">
+		<thead>
+			<tr>
+				<td colspan="6" class="text-center negrito">LISTA AGRUPADA DE MATERIAIS E PREÇO COM BASE NO SINAPI</td>
+			</tr>
+			<tr>
+				<th>#</th>
+				<th>Material</th>
+				<th>Unidade</th>
+				<th>Quantidade</th>
+				<th>Valor Unitário</th>
+				<th>Valor Total</th>
+			</tr>
+		</thead> 
+		<tbody>
+			<tr id="linhaComServicos" class="comServico" th:each="item : ${materiaisDetalhados}">
+				<td th:text="${itemStat.index} + 1">1</td>
+				<td th:text="${item.material}">Bloco de Ceramico</td>
+				<td th:text="${item.unidade}">M²</td>
+				<td th:text="${{item.quantidade}}">15</td>
+				<td th:text="${{item.valorSinapi}}">15</td>
+				<td th:text="${{item.valorTotalSinapi}}">15</td>
+<!-- 				<td> -->
+<!-- 					<div th:each="fornecedor : ${item.fornecedores}" > -->
+<!-- 					 <p th:text="|${fornecedor.nome} - R$ ${{fornecedor.quantidade}}|"></p> -->
+<!-- 					</div> -->
+<!-- 				</td> -->
+				
+			<tr>
+				<td colspan="6" th:if="${#lists.isEmpty(materiaisDetalhados)}">Não tem Material no(s) serviço(s) adicionado(s) para orçar</td>
+			</tr>
+
+		</tbody>
+	</table>
+</div>
+
+<br />
+<br />
+
+</html>

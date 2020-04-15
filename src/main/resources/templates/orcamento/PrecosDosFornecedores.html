@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="pt" xmlns="http://www.w3.org/1999/xhtml" 
+	  xmlns:th="http://www.thymeleaf.org" 
+	  xmlns:data="http://www.thymeleaf.org/extras/data"
+	 	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+
+<!-- Serviços -->
+<div class="table-responsive bw-tabela-simples js-tabela-item-detalhe-material">
+	
+	<section>
+	
+	<div class="container-fluid">
+	
+	
+	<p> Você precisa salvar o orçamento para podermos buscar os insumos de cada composição e enviar para os fornecedores</p>
+	
+	
+	<form>
+	
+	 <button type="submit" class="btn  btn-primary  js-submit-btn" data:acao="salvar">Salvar</button>
+	
+	<p> Você pode enviar para todos ou selecionar os fornecedores especificamente</p>
+	
+	
+	
+	
+	 
+	<div class="container-fluid">
+			<div class="">
+				<label for="fornecedores"></label>
+					<select id="fornecedores" class="contacts"  multiple="multiple" th:field="*{fornecedores}" placeholder="Escolha os fornecedores">
+			    		<option th:each="fornecedor : ${fornecedores}"  th:value="${fornecedor.id}" th:text="|${fornecedor.nome} <${fornecedor.email}>|" >Etapas</option>  
+					</select>
+			</div>
+			
+			<div>
+			<input type="checkbox" value="ENVIAR_PARA_TODOS"/> ou Enviar para Todos os fornecedores cadastrados.
+			</div>
+			
+			<div class="row" style="clear: both" >
+				<div class="col-lg-12">
+					<button type="submit" class="btn  btn-warning  js-submit-btn" data:acao="enviarEmail">Enviar</button>
+				</div>
+			</div>
+			
+			
+	</div>
+	
+	
+	</form>
+	
+	</div>
+	
+	
+	<script th:src="@{/js/selectize.js}"></script>
+	<script th:src="@{/js/orcamento.fornecedores-envio-email.js}"></script>
+	
+</section>
+	
+</div>
+
+
+<br />
+<br />
+
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+
+
+
+
+</html>

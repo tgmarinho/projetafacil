@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<groupId>br.com.projetafacil</groupId>
+	<artifactId>projetafacil</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+
+	<packaging>jar</packaging>
+
+	<name>projetafacil</name>
+	<description>Orçamentos para Engenheiros - Projeta Facil</description>
+
+	<parent>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter-parent</artifactId>
+		<version>1.4.2.RELEASE</version>
+		<relativePath /> <!-- lookup parent from repository -->
+	</parent>
+
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+		<java.version>1.8</java.version>
+
+		<thymeleaf.version>3.0.3.RELEASE</thymeleaf.version>
+		<thymeleaf-layout-dialect.version>2.1.2</thymeleaf-layout-dialect.version>
+		<thymeleaf-extras-data-attribute.version>2.0.1</thymeleaf-extras-data-attribute.version>
+		<thymeleaf-extras-springsecurity4.version>3.0.1.RELEASE</thymeleaf-extras-springsecurity4.version>
+
+		<!-- Versão mais atual do Thymeleaf e Layout <thymeleaf.version>3.0.2.RELEASE</thymeleaf.version> 
+		<thymeleaf-layout-dialect.version>2.0.5</thymeleaf-layout-dialect.version> -->
+
+
+		<!-- Apache Bean Utils -->
+		<commons-beanutils.version>1.9.2</commons-beanutils.version>
+
+		<!-- Spring Security -->
+		<spring-security.version>4.1.1.RELEASE</spring-security.version>
+
+		<flyway-maven-plugin.version>4.0.2</flyway-maven-plugin.version>
+		
+		<mysql-connector-java.version>5.1.39</mysql-connector-java.version>
+		
+		
+
+
+	</properties>
+
+	<dependencies>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-data-jpa</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-thymeleaf</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-web</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-tomcat</artifactId>
+			<scope>compile</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-test</artifactId>
+			<scope>test</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-devtools</artifactId>
+			<optional>true</optional>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-security</artifactId>
+		</dependency>
+
+
+		<dependency>
+			<groupId>org.thymeleaf.extras</groupId>
+			<artifactId>thymeleaf-extras-springsecurity4</artifactId>
+		</dependency>
+
+<!-- 		<dependency> -->
+<!-- 			<groupId>org.flywaydb</groupId> -->
+<!-- 			<artifactId>flyway-core</artifactId> -->
+<!-- 		</dependency> -->
+		
+		<dependency>
+			<groupId>commons-beanutils</groupId>
+			<artifactId>commons-beanutils</artifactId>
+		</dependency>
+
+
+		<!-- <dependency> -->
+		<!-- <groupId>com.microsoft.sqlserver</groupId> -->
+		<!-- <artifactId>sqljdbc41</artifactId> -->
+		<!-- <version>4.1</version> -->
+		<!-- <scope>system</scope> -->
+		<!-- <systemPath>C:\Users\tgmarinho\.m2\repository\com\microsoft\sqlserver\sqljdbc41\4.1\sqljdbc41.jar</systemPath> -->
+		<!-- </dependency> -->
+
+
+		<dependency>
+			<groupId>mysql</groupId>
+			<artifactId>mysql-connector-java</artifactId>
+			<scope>runtime</scope>
+		</dependency>
+		
+		<!-- https://mvnrepository.com/artifact/org.apache.poi/poi -->
+		<dependency>
+		    <groupId>org.apache.poi</groupId>
+		    <artifactId>poi</artifactId>
+		    <version>3.7</version>
+		</dependency>
+
+
+<!-- 		<dependency> -->
+<!-- 		    <groupId>org.projectlombok</groupId> -->
+<!-- 		    <artifactId>lombok</artifactId> -->
+<!-- 		    <version>1.16.16</version> -->
+<!-- 		    <scope>provided</scope> -->
+<!-- 		</dependency> -->
+
+		<!-- <dependency> -->
+		<!-- <groupId>org.postgresql</groupId> -->
+		<!-- <artifactId>postgresql</artifactId> -->
+		<!-- <scope>runtime</scope> -->
+		<!-- </dependency> -->
+
+
+		<!-- s3ninja para teste -->
+<!-- 		<dependency> -->
+<!-- 			<groupId>com.scireum</groupId> -->
+<!-- 			<artifactId>s3ninja</artifactId> -->
+<!-- 			<version>2.3.2</version> -->
+<!-- 		</dependency> -->
+
+<!-- 		amazonaws hospedar arquivos escalavelmente na amazon --> 
+<!-- 		<dependency> -->
+<!-- 			<groupId>com.amazonaws</groupId> -->
+<!-- 			<artifactId>aws-java-sdk</artifactId> -->
+<!-- 			<version>1.9.11</version> -->
+<!-- 		</dependency> -->
+
+
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-configuration-processor</artifactId>
+			<optional>true</optional>
+		</dependency>
+
+	<dependency>
+		<groupId>com.github.mxab.thymeleaf.extras</groupId>
+		<artifactId>thymeleaf-extras-data-attribute</artifactId>
+	</dependency>
+
+		<!-- https://mvnrepository.com/artifact/org.javassist/javassist -->
+		<dependency>
+			<groupId>org.javassist</groupId>
+			<artifactId>javassist</artifactId>
+			<version>3.20.0-GA</version>
+		</dependency>
+
+
+
+		<!-- 	<dependency> -->
+<!-- 		<groupId>org.apache.camel</groupId> -->
+<!-- 		<artifactId>camel-core</artifactId> -->
+<!-- 		<version>2.16.3</version> -->
+<!-- 	</dependency> -->
+	</dependencies>
+
+	<build>
+		<finalName>${project.artifactId}</finalName>
+		<plugins>
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+			</plugin>
+
+			<!-- <plugin> -->
+			<!-- <groupId>com.heroku.sdk</groupId> -->
+			<!-- <artifactId>heroku-maven-plugin</artifactId> -->
+			<!-- <version>1.1.3</version> -->
+			<!-- <configuration> -->
+			<!-- <processTypes> -->
+			<!-- <web>java $JAVA_OPTS -cp target/classes:target/dependency/* Main</web> -->
+			<!-- </processTypes> -->
+			<!-- </configuration> -->
+			<!-- </plugin> -->
+
+		</plugins>
+	</build>
+
+
+</project>

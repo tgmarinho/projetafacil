@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+
+
+
+<div class="alert alert-warning alert-dismissible" role="alert" th:if="${!#strings.isEmpty(mensagemAlerta)}" th:fragment="alert">
+	<button type="button" class="close" data-dismiss="alert" ><span aria-hidden="true">&times;</span></button>
+	<span th:text="${mensagemAlerta}"></span>
+</div>
+
+<div class="alert alert-danger alert-dismissible"  role="alert" th:if="${!#strings.isEmpty(mensagemErro)}" th:fragment="alert">
+	<button type="button" class="close" data-dismiss="alert" ><span aria-hidden="true">&times;</span></button>
+	<span th:text="${mensagemErro}"></span>
+</div>
+
+<div class="alert alert-danger alert-dismissible"  role="alert" th:if="${not #lists.isEmpty(logsImportacao)}" th:fragment="alert">
+	<div th:each="log : ${logsImportacao}">
+		<span th:text="${log}"></span>
+	</div>
+</div>
+
+
+</html>

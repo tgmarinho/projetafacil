@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="pt" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:data="http://www.thymeleaf.org/extras/data">
+
+<!-- Serviços -->
+<div class="table-responsive bw-tabela-simples js-tabela-item">
+	<table id="detalhe-maodeobra-table" th:name="detalhe-maodeobra-table" class="table  table-hover table-striped">
+		<thead>
+			<tr>
+				<td colspan="5" class="text-center negrito">PREÇO DETALHADO DA MÃO DE OBRA</td>
+			</tr>
+			<tr>
+				<th>#</th>
+				<th>Mão de Obra</th>
+				<th>Unidade</th>
+				<th>Quantidade Total</th>
+				<th>R$ Uni.</th>
+				<th>Subtotal</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr id="linhaComServicos" class="comServico" th:each="item : ${maosDeObraDetalhados}">
+				<td th:text="${itemStat.index} + 1">1</td>
+				<td th:text="${item.maoDeObra}">Pedreiro</td>
+				<td th:text="${item.unidade}">M²</td>
+				<td th:text="${{item.quantidade}}">15</td>
+				<td th:text="|R$ ${{item.valor}}|">15</td>
+				<td th:text="|R$ ${{item.valorTotal}}|">15</td>
+			<tr>
+				<td colspan="7" th:if="${#lists.isEmpty(maosDeObraDetalhados)}">Não tem Mão de Obra Própria no(s) serviço(s) adicionado(s) para orçar</td>
+			</tr>
+
+		</tbody>
+	</table>
+</div>
+
+<br />
+<br />
+
+</html>

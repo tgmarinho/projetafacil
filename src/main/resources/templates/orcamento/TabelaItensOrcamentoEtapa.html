@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="pt" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:data="http://www.thymeleaf.org/extras/data">
+
+<!-- Serviços -->
+<div class="table-responsive bw-tabela-simples js-tabela-item" data:valor-total="${valorTotal}">
+    <table id="orcamento-table" th:name="orcamento-table-itens" class="table  table-hover table-striped">
+        <tr>
+            <td colspan="4" class="text-center negrito">SERVIÇOS SELECIONADOS</td>
+        </tr>
+        <tr>
+            <th class="col-xs-2">Referência / Código (PF)</th>
+            <th class="col-xs-7">Serviço / Unidade</th>
+            <th class="bw-required col-sm-3">Quantidade</th>
+
+            <th class="col-xs-1"></th>
+        </tr>
+        <th:block th:each="classe : ${classes}">
+            <tr class="classes">
+                <td colspan="4" class="classe text-left negrito corTextoEtapa" th:text="|${classe.sigla} - ${classe.nome}|">1 - Classe</td>
+            </tr>
+
+            <tr id="linhaComServicos" class="comServico" th:each="item : ${itensOrcamento}" th:if="${classe.sigla} == ${item.composicaoServico.classe.sigla}">
+                <th:block th:if="${classe.sigla} == ${item.composicaoServico.classe.sigla}">
+                    <td th:text="|${item.composicaoServico.referencia} / ${item.composicaoServico.classe.sigla}.${item.composicaoServico.codigo}|"></td>
+                    <td class="col-xs-5" th:text="|${item.composicaoServico.nome} / ${item.composicaoServico.unidade.descricao}|"></td>
+                    <td class="input-quantidade">
+                        <input th:if="${item.composicaoServico.unidade.descricao} != 'Unitário'" type="text" th:value="${{item.quantidade}}"
+                               class="js-tabela-orcamento-quantidade-item js-coeficiente form-control " data:id-servico="${item.composicaoServico.id}"/>
+
+                        <input th:if="${item.composicaoServico.unidade.descricao} == 'Unitário'" type="text" th:value="${{item.quantidade}}"
+                               class="js-tabela-orcamento-quantidade-item js-coeficiente form-control " data:id-servico="${item.composicaoServico.id}"/>
+                    </td>
+                    <td>
+                        <a class="btn  btn-link  btn-xs  js-tooltip  js-exclusao-item-btn " title="Excluir" href="#"
+                           data:idservico="${item.composicaoServico.id}">
+                            <i class="glyphicon glyphicon-remove"></i>
+                        </a>
+                    </td>
+                </th:block>
+            </tr>
+    </table>
+</div>
+<br/>
+<br/>
+</html>

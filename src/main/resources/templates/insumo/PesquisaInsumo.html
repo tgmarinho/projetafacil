@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:th="http://www.thymeleaf.org"
+    xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+  	xmlns:data="http://www.thymeleaf.org/extras/data"
+    layout:decorate="~{layout/LayoutPadrao}"
+    xmlns:brewer="http://brewer.algaworks.com">
+    
+<head>
+	<title>Pesquisa de Materiais para Criação de Composição</title>
+</head>
+
+<section layout:fragment="conteudo">
+		<div layout:insert="fragments/MensagemGeral"></div>
+
+	<div class="page-header">
+		<div class="container-fluid">
+			<div class="row">
+				<div class="col-sm-10">
+					<h1>Pesquisa de Insumo</h1>
+				</div>
+				
+				<div class="col-sm-2">
+					<div class="aw-page-header-controls">
+						<a class="btn  btn-default" th:href="@{/insumos/novo}">
+							<i class="glyphicon  glyphicon-plus-sign"></i> <span class="hidden-xs  hidden-sm">Novo Insumo</span>
+						</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	   	
+	   	 <div class="panel-body">
+	   		<form method="GET" th:object="${insumoFilter}">
+				<div class="row">
+					<div class="form-group col-sm-8">
+						<input type="text" class="form-control" id="insumo" placeholder="Qual Insumo você está procurando?" autofocus="autofocus" th:field="*{nome}"/>
+					</div>
+					<div class="form-group col-sm-4">
+						<div class="form-group  col-sm-4">
+									<select class="form-control" name="tipo" th:field="*{tipo}">
+										<option value="">Tipo de Insumo</option>
+										<option th:each="tipo : ${tipos}" th:value="${tipo}" th:text="${tipo.descricao}"></option>
+			                    	</select>
+								</div>
+					</div>
+				</div>
+			
+				<button type="submit" class="btn  btn-primary">Pesquisar</button>
+			</form>
+	   		
+	   		<div class="table-responsive  bw-tabela-simples">
+				<table class="table  table-hover">
+		   			<thead>
+		   				<tr>
+		   					<th>#</th>
+		   					<th>
+								<brewer:order page="${pagina}" field="nome" text="Nome" />				
+							</th>
+		   					<th>Unidade</th>
+		   					<th>Tipo</th>
+		   					<th class="table-col-acoes"></th>
+		   				</tr>
+		   			</thead>
+		   			<tbody>
+		   				<tr th:each="insumo : ${pagina.conteudo}">
+		   					<td th:text="${insumo.id}">1</td>
+		   					<td th:text="${insumo.nome}"></td>
+		   					<td th:text="${insumo.unidade.descricao}"></td>
+		   					<td th:text="${insumo.tipo.descricao}"></td>
+		   					<td>
+		   						<a class="btn btn-link btn-xs" th:href="@{/insumos/{id}(id=${insumo.id})}" 
+		   								title="Editar" rel="tooltip" data-placement="top">
+		   							<span class="glyphicon glyphicon-pencil"></span>
+		   						</a>
+								<a class="btn  btn-link  btn-xs  js-tooltip  js-exclusao-btn" title="Excluir" href="#" 
+									data:url="@{/insumos/{id}(id=${insumo.id})}"
+									data:objeto="${insumo.nome}">
+									<i class="glyphicon glyphicon-remove"></i>
+								</a>
+		   					</td>
+		   				</tr>
+		   				<tr th:if="${pagina.vazia}">
+							<td colspan="5">Nenhum insumo encontrado</td>
+						</tr>
+		   			</tbody>
+		   		</table>
+		   	</div>
+	   	</div>
+	   	
+	   	  	<brewer:pagination page="${pagina}"/>
+	   	
+</section>
+</html>

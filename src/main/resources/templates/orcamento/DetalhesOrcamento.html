@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorator="LayoutPadrao">
+
+<head>
+<title>Detalhes do Orçamentos</title>
+</head>
+
+<section layout:fragment="conteudoOrcamento">
+	<div layout:insert="MensagemGeral"></div>
+
+	<div class="panel panel-default">
+		<div class="panel-heading">
+			<div class="clearfix">
+				<h1 class="panel-title aw-titulo-panel">Detalhes do Orçamento</h1>
+				<a class="btn btn-link aw-link-panel" th:href="@{/orcamentos}">Voltar
+					para Orçamentos</a>
+			</div>
+		</div>
+
+		<h3>Em fase de construção</h3>
+
+</div>
+
+
+		<div class="container-fluid">
+
+			<!-- Nav tabs -->
+			<ul class="nav nav-tabs" role="tablist">
+				<li role="presentation" class="active"><a href="#materiais"
+					aria-controls="materiais" role="tab" data-toggle="tab">Materiais</a></li>
+				<li role="presentation"><a href="#maoDeObra"
+					aria-controls="maoDeObra" role="tab" data-toggle="tab">Mão de Obra</a></li>
+				<li role="presentation"><a href="#equipamentos"
+					aria-controls="equipamentos" role="tab" data-toggle="tab">Equipamentos</a></li>
+			</ul>
+
+			<!-- Tab panes -->
+			<div class="tab-content">
+			
+				<div role="tabpanel" class="tab-pane active fade" id="materiais">
+				
+				<h2>Materiais</h2>
+				
+				
+				
+				</div>
+				
+				
+				<div role="tabpanel" class="tab-pane fade" id="maoDeObra">
+				
+				
+				<h2>Mão de Obra</h2>
+				
+				
+				</div>
+				
+				
+				<div role="tabpanel" class="tab-pane fade" id="equipamentos">
+				
+				<h2>Equipamentos</h2>
+				
+				
+				</div>
+			</div>
+
+		</div>
+
+
+</section>
+</html>

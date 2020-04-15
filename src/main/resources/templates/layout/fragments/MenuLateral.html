@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="pt" xmlns="http://www.w3.org/1999/xhtml" 
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:brewer="http://brewer.algaworks.com">
+	
+<body>
+<aside class="aw-layout-sidebar  js-sidebar" th:fragment="layout-sidebar">
+	<div class="aw-layout-sidebar__content">
+
+    	<nav class="aw-menu  js-menu">
+      		<ul class="aw-menu__list">
+
+        		<li class="aw-menu__item" >
+          			<a th:href="@{/index}"><i class="fa  fa-fw  fa-home"></i><span>Dashboard</span></a>
+        		</li>
+        		
+        		 <li class="aw-menu__item"> 
+          			<a href="#">
+            			<i class="fa  fa-fw  fa-user"></i><span>Cadastro Básico</span>
+            			<i class="aw-menu__navigation-icon  fa"></i>
+          			</a>
+
+          			<ul class="aw-menu__list  aw-menu__list--sublist">
+			            <li class="aw-menu__item  aw-menu__item--link" brewer:menu="@{/perfil.*}">
+			            	<a th:href="@{/perfil}">Meu Perfil</a>
+			            </li>
+          			</ul>
+          			
+          			
+        		</li>	
+        		
+        		
+        		<li class="aw-menu__item" th:if="${#strings.equals(#authentication.principal.usuario.tipoUsuario, 'ADMINISTRADOR') or #strings.equals(#authentication.principal.usuario.tipoUsuario, 'ORCAMENTISTA')}">
+          			<a href="#">
+            			<i class="fa  fa-fw  fa-hand-o-right"></i><span>Codificação</span>
+            			<i class="aw-menu__navigation-icon  fa"></i>
+          			</a>
+          			
+          			<ul class="aw-menu__list  aw-menu__list--sublist">
+			              <li class="aw-menu__item  aw-menu__item--link" brewer:menu="@{/classes.*}" th:if="${#strings.equals(#authentication.principal.usuario.tipoUsuario, 'ADMINISTRADOR')}">
+			            	<a th:href="@{/classes}">Classes</a>
+			           	  </li>
+			        </ul>
+
+			         
+			    </li>
+			     
+			     
+			     
+			    <li class="aw-menu__item" th:if="${#strings.equals(#authentication.principal.usuario.tipoUsuario, 'ADMINISTRADOR')}">
+          			<a href="#">
+            			<i class="fa  fa-fw  fa-cubes"></i><span>Insumos</span>
+            			<i class="aw-menu__navigation-icon  fa"></i>
+          			</a>
+          			
+          			<ul class="aw-menu__list  aw-menu__list--sublist">
+			              <li class="aw-menu__item  aw-menu__item--link" brewer:menu="@{/insumos.*}">
+			            	<a th:href="@{/insumos/novo}">Criar</a>
+			            </li>
+			        </ul>
+			       	<ul class="aw-menu__list  aw-menu__list--sublist">    
+			             <li class="aw-menu__item  aw-menu__item--link"  brewer:menu="@{/insumos.*}">
+			            	<a th:href="@{/insumos}">Pesquisar</a>
+			            </li>
+			         </ul>    
+			         
+			        
+			        <ul class="aw-menu__list  aw-menu__list--sublist">
+			              <li class="aw-menu__item  aw-menu__item--link" brewer:menu="@{/importacao.*}">
+			            	<a th:href="@{/importacao/nova}">Importação</a>
+			            </li>
+			        </ul>
+			        
+			    </li>
+			     
+			     
+			    <li class="aw-menu__item" th:if="${#strings.equals(#authentication.principal.usuario.tipoUsuario, 'ADMINISTRADOR') or #strings.equals(#authentication.principal.usuario.tipoUsuario, 'ORCAMENTISTA')}">
+          			<a href="#">
+            			<i class="fa  fa-fw  fa-cog"></i><span>Composições</span>
+            			<i class="aw-menu__navigation-icon  fa"></i>
+          			</a>
+      
+          			<ul class="aw-menu__list  aw-menu__list--sublist">
+			            <li class="aw-menu__item  aw-menu__item--link" brewer:menu="@{/composicoes.+}">
+			            	<a th:href="@{/composicoes/nova}">Criar</a>
+			            </li>
+			            
+			            <li class="aw-menu__item  aw-menu__item--link" brewer:menu="@{/composicoes}">
+			            	<a th:href="@{/composicoes}">Pesquisar</a>
+			            </li>
+			        </ul>
+			    </li>
+			    
+			    
+			     <li class="aw-menu__item" th:if="${#strings.equals(#authentication.principal.usuario.tipoUsuario, 'ADMINISTRADOR') or #strings.equals(#authentication.principal.usuario.tipoUsuario, 'ORCAMENTISTA')}">
+          			<a href="#">
+            			<i class="fa  fa-fw  fa-truck"></i><span>Fornecedores</span>
+            			<i class="aw-menu__navigation-icon  fa"></i>
+          			</a>
+      
+          			<ul class="aw-menu__list  aw-menu__list--sublist">
+			            <li class="aw-menu__item  aw-menu__item--link" brewer:menu="@{/fornecedores.+}">
+			            	<a th:href="@{/fornecedores/novo}">Cadastrar</a>
+			            </li>
+			            
+			            <li class="aw-menu__item  aw-menu__item--link" brewer:menu="@{/fornecedores}">
+			            	<a th:href="@{/fornecedores}">Pesquisar</a>
+			            </li>
+			        </ul>
+			    </li>
+			    
+			    
+			    <li class="aw-menu__item" th:if="${#strings.equals(#authentication.principal.usuario.tipoUsuario, 'ADMINISTRADOR') or #strings.equals(#authentication.principal.usuario.tipoUsuario, 'ORCAMENTISTA')}">
+          			<a href="#">
+            			<i class="fa  fa-fw  fa-money"></i><span>Orçamentos</span>
+            			<i class="aw-menu__navigation-icon  fa"></i>
+          			</a>
+      
+          			<ul class="aw-menu__list  aw-menu__list--sublist">
+			            <li class="aw-menu__item  aw-menu__item--link" brewer:menu="@{/orcamentos.+}">
+			            	<a th:href="@{/orcamentos/novo}">Orçar</a>
+			            </li>
+			            
+			            <li class="aw-menu__item  aw-menu__item--link" brewer:menu="@{/orcamentos}">
+			            	<a th:href="@{/orcamentos}">Pequisar</a>
+			            </li>
+			        </ul>
+			    </li>
+			    
+			     
+      		</ul>
+    	</nav>
+	</div>
+</aside>
+</body>
+</html>

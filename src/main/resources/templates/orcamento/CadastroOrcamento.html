@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{layout/LayoutPadrao}"
+	xmlns:brewer="http://brewer.algaworks.com"
+	xmlns:data="http://www.thymeleaf.org/extras/data">
+
+<head>
+	<title>Orçamento</title>
+	<link rel="stylesheet" th:href="@{/css/vendors/easy-autocomplete.min.css}"/>
+	<link rel="stylesheet" th:href="@{/css/vendors/easy-autocomplete.themes.min.css}"/>
+	<link rel="stylesheet" type="text/css" th:href="@{/css/selectize.default.css}"/>
+	<link rel="stylesheet" type="text/css" th:href="@{/css/orcamento.fornecedores-envio-email.css}"/>
+	
+	
+	
+</head>
+
+<section layout:fragment="conteudo">
+
+	<div class="page-header">
+		<div class="container-fluid">
+			<div class="row">
+				<div class="col-xs-10">
+					<h1 th:if="${orcamento.novo}" >Orçando</h1>
+					<h1 th:unless="${orcamento.novo}" id="labelOrcamento"  
+								th:text="|Alterando o Orçamento nº ${orcamento.id} - ${orcamento.descricao}|">Edição do Orçamento nº 12 - My House</h1>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	<div class="container-fluid">
+	
+		<form method="POST" th:action="@{/orcamentos/novo}" th:object="${orcamento}" class="js-formulario-principal">
+			<brewer:message/>
+		
+			<input type="hidden" id="uuid" th:field="*{uuid}"/>
+			<input type="hidden" id="idOrcametno" th:field="*{id}"/>
+			<input type="hidden" th:field="*{usuario}"/>
+			
+			<div class="row">
+				
+				<div class="col-sm-12">
+						<div class="aw-box">
+						
+							<div class="aw-box__value">
+								<span class="js-tooltip">Exibir Por</span>
+							</div>
+							
+							<div>
+								<label  class="checkbox-inline estilo-label--exibir" for="mostrar-classes" >
+									 <input class="estilo-checkbox--exibir"  type="checkbox" id="mostrar-classes" checked> Classes
+								</label> 
+
+								<label class="checkbox-inline estilo-label--exibir" for="mostrar-servicos">
+									  <input class="estilo-checkbox--exibir" type="checkbox" id="mostrar-servicos" checked> Serviços
+								</label>
+							</div>
+							
+						</div>
+				 </div>
+				
+				
+			</div>
+			
+			<div class="row">
+				<div class="form-group  col-sm-9" th:classappend="${#fields.hasErrors('descricao')} ? has-error">
+					<label class="control-label obrigatorio" for="descricaoProjeto">Descrição do Projeto</label>
+					<input type="text" class="form-control" id="descricaoProjeto" th:field="*{descricao}" autofocus="autofocus" />
+				</div>
+				
+			
+				<div class="form-group  col-sm-3">
+					<label class="control-label" for="valorBDI">Valor do BDI</label>
+					<div class="input-group">
+	      				<div class="input-group-addon">%</div> 
+						<input type="text" maxlength="6" class="form-control  js-decimal" id="valorBDI" 
+							th:field="*{{valorBDI}}" data:valor="${valorBDI}" />
+					</div>
+				</div>
+								
+			</div>
+			
+			<div class="row">
+					
+				<div class="form-group  col-sm-6">
+					<label for="estado">Local da Obra: Estado</label>
+					<select id="estado" class="form-control" th:field="*{cidade.estado}">
+	                    <option value="">Selecione o estado</option>
+	                    <option th:each="estado : ${estados}" th:value="${estado.id}" th:text="|${estado.sigla} - ${estado.nome}|">São Paulo</option>
+	                </select>
+				</div>
+				
+				<div class="form-group  col-sm-6">
+					<label  for="cidade">Cidade</label>
+					<div class="bw-field-action">
+						<input type="hidden" id="inputHiddenCidadeSelecionada" th:value="*{cidade} != null ? *{cidade.id}"/>
+						<select id="cidade" class="form-control" data:url="@{cidades}" th:field="*{cidade}">
+						</select>
+						
+						<div class="bw-field-action__icon  js-img-loading" style="display: none">
+							<img th:src="@{/images/mini-loading.gif}"/>
+						</div>
+					</div>
+				</div>
+			</div>		
+			
+			<div class="row">
+				<div class="form-group  col-xs-12">
+					<ul class="nav nav-tabs  js-abas-orcamento">
+					  <li role="presentation" class="active"><a href="#servicos" data:aba="servicos" data:url="@{/orcamentos/servicos/{uuid}(uuid=${orcamento.uuid})}" >Serviços</a></li>
+					  <li role="presentation"><a href="#detalhesMaterial" data:aba="detalhesMaterial" data:url="@{/orcamentos/detalheMaterial/{uuid}(uuid=${orcamento.uuid})}">Lista de Materiais com Preço SINAPI</a></li>
+					  <li role="presentation"><a href="#detalhesMaoObraPropia" data:aba="detalhesMaoObraPropia" data:url="@{/orcamentos/detalheMaoDeObraPropria/{uuid}(uuid=${orcamento.uuid})}">Lista e Preço da Mão de Obra</a></li>
+					  <li role="presentation"><a href="#precosDosFornecedores" data:aba="precosDosFornecedores" data:url="@{/orcamentos/precoDosFornecedores/{uuid}(uuid=${orcamento.uuid})}">Preço dos Fornecedores</a></li>
+					</ul>
+				</div>
+			</div>
+
+
+			<div class="tab-content">
+				
+				<div class="tab-pane active" id="servicos">
+			
+					<input type="text" class="col-xs-12 js-nome-codigobim-input"  id="round" 
+						placeholder="Pesquise e insira os Serviços do Projeto" autofocus="autofocus" data:url="@{/orcamentos}"/>
+					
+					<div class="js-tabela-servicos-container" data:valor="${valorTotalItens}">
+						<th:block th:replace="orcamento/TabelaItensOrcamentoEtapa"/>
+					</div>
+					
+				</div>
+				
+
+				<div class="tab-pane" id="detalhesMaterial">
+					<div class="row">
+						<div>
+							<th:block th:replace="orcamento/DetalhesMateriaisOrcamento" />
+						</div>
+					</div>
+				</div>
+
+
+				<div class="tab-pane" id="detalhesMaoObraPropia">
+					<div class="row">
+						<div>
+							<th:block th:replace="orcamento/DetalhesMaoDeObraPropriaOrcamento" />
+						</div>
+					</div>
+				</div>
+				
+				
+				<div class="tab-pane" id="precosDosFornecedores">
+					<div class="row">
+						<div class="form-group  col-sm-3" >
+							<label class="control-label">PREÇO DOS FORNECEDORES</label>
+						</div>
+					</div>
+				</div>
+					
+			</div>
+			
+			
+			
+			
+			<div class="row" style="clear: both" >
+				<div class="col-lg-12">
+					<button type="submit" class="btn  btn-primary  js-submit-btn" data:acao="salvar">Salvar</button>
+					<button class="btn  btn-danger  js-submit-btn" data:acao="cancelar" >Cancelar</button>
+				</div>
+			</div>
+		</form>
+	</div>
+	
+</section>
+
+
+	
+	
+	
+	
+
+<th:block layout:fragment="javascript-extra">
+	<script th:src="@{/js/vendors/handlebars.min.js}"></script>
+	<script th:src="@{/js/vendors/jquery.easy-autocomplete.min.js}"></script>
+	<script th:src="@{/js/orcamento.autocomplete-itens.js}"></script>
+	<script th:src="@{/js/orcamento.tabela-itens.js}"></script>
+	<script th:src="@{/js/orcamento.combo-estado-cidade.js}"></script>
+	<script th:src="@{/js/orcamento.js}"></script>
+	
+	
+	
+	<script>
+	
+	$(function() {
+		$('.js-abas-orcamento a').click(function (e) {
+			e.preventDefault();
+			
+			var aba = $(this);
+			var url = $(this).data('url');
+			var nome = $(this).data('aba');
+			console.log(url);
+			var resposta = $.ajax({
+				url: url, 
+				method: 'GET',
+				data: { estado : $('#estado').val() } 
+			});
+
+			resposta.done(function(e){
+				console.log('nome da aba clicada', nome);
+				 if (nome === 'detalhesMaterial') {
+					$('#detalhesMaterial').html(e);
+				} else if (nome === 'detalhesMaoObraPropia') {
+					$('#detalhesMaoObraPropia').html(e);	
+				} else if (nome === 'precosDosFornecedores') {
+					$('#precosDosFornecedores').html(e);	
+				}
+			
+				$(aba).tab('show');
+			});
+			
+		});
+	});
+	</script>
+	
+	
+	
+	
+	
+
+</th:block>
+
+</html>

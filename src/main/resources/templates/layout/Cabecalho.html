@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+xmlns:th="http://www.thymeleaf.org"
+xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+
+	<header>
+				<nav class="navbar navbar-inverse navbar-static-top">
+					<div class="container">
+						<div class="navbar-header">
+							<button type="button" class="navbar-toggle collapsed"
+							data-toggle="collapse" data-target="#collapse-navbar"
+							aria-expanded="false">
+							<span class="sr-only">Toggle navigation</span>
+							<span class="icon-bar"></span> 
+							<span class="icon-bar"></span> 
+							<span class="icon-bar"></span>
+						</button>
+
+						<a class="navbar-brand" th:href="@{/index2}">Projeta Fácil </a>
+					</div>
+					<div class="collapse navbar-collapse" id="collapse-navbar">
+
+						<ul class="nav navbar-nav">
+							<li><a th:href="@{/index2}">Inicial</a></li>
+							<li><a th:href="@{/index}">Home</a></li>
+							<li><a th:href="@{/materiais}">Material</a></li>
+						</ul>
+
+						<ul class="nav navbar-nav">
+							<li class="dropdown">
+								<a href="#" class="dropdown-toggle"
+								data-toggle="dropdown" role="button" aria-haspopup="true"
+								aria-expanded="false">Codificação
+								<span class="caret"></span>
+							</a>
+							<ul class="dropdown-menu">
+								<li><a th:href="@{/codificacao/etapas}">Etapa</a></li>
+								<li><a th:href="@{/codificacao/subetapas}">Sub Etapa</a></li>
+								<li><a th:href="@{/codificacao/servicosCod}">Serviços</a></li>
+							</ul>
+						</li>
+					</ul>
+
+
+					<ul class="nav navbar-nav">
+						<li class="dropdown">
+							<a href="#" class="dropdown-toggle"
+							data-toggle="dropdown" role="button" aria-haspopup="true"
+							aria-expanded="false">Insumos
+							<span class="caret"></span></a>
+							<ul class="dropdown-menu">
+								<li><a th:href="@{/composicaoInsumo/materiais}">Material</a></li>
+								<li><a th:href="@{/composicaoInsumo/maosDeObra}">Mão de Obra</a></li>
+								<li><a th:href="@{/composicaoInsumo/equipamentos}">Equipamento</a></li>
+							</ul></li>
+						</ul>
+
+						<ul class="nav navbar-nav">
+							<li>
+								<a th:href="@{/composicaoServico/composicoes}">Composição e Serviço</a>
+							</li>
+						</ul>
+
+						<ul class="nav navbar-nav">
+							<li>
+								<a th:href="@{/orcamentos}">Orçamento</a>
+							</li>
+						</ul>
+
+					</div>
+				</div>
+
+			</nav>
+		
+</header>
+
+</html>

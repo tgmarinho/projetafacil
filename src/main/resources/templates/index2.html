@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Projeta Fácil">
+    <meta name="author" content="Thiago Marinho de Oliveira">
+
+    <title>Projeta Fácil - Orçamentos de Projetos e muitos mais(BETA)</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom Fonts -->
+    <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic,900,900italic' rel='stylesheet' type='text/css'>
+
+    <!-- Plugin CSS -->
+    <link href="vendor/magnific-popup/magnific-popup.css" rel="stylesheet">
+
+    <!-- Theme CSS -->
+    <link href="css/creative.min.css" rel="stylesheet">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+
+<body id="page-top">
+
+    <nav id="mainNav" class="navbar navbar-default navbar-fixed-top">
+        <div class="container-fluid">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span> Menu <i class="fa fa-bars"></i>
+                </button>
+                <a class="navbar-brand page-scroll" href="#page-top">Projeta Fácil - BETA</a>
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-right">
+                	<li>
+                        <a class="page-scroll" th:href="@{/index}">Acessar o Sistema</a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" href="#about">Sobre</a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" href="#services">O quê fazemos</a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" href="#portfolio">Oportunidade</a>
+                    </li>
+                      <li>
+                        <a class="page-scroll" href="#planos">Planos</a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" href="#contact">Contato</a>
+                    </li>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container-fluid -->
+    </nav>
+
+    <header>
+        <div class="header-content">
+            <div class="header-content-inner">
+                <h1 id="homeHeading">ORÇAMENTOS DOS SEUS PROJETOS DE FORMA MAIS FÁCIL E ACESSÍVEL</h1>
+                <hr>
+                <p>Projeta Fácil é uma ferramenta de orçamento voltada a construção civil. Oferecendo composições de serviços, preço e locais de compra dos seus insumos, de uma maneira rápida e precisa!</p>
+                <a href="#about" class="btn btn-primary btn-xl page-scroll">Saiba mais</a>
+            </div>
+        </div>
+    </header>
+
+    <section class="bg-primary" id="about">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 text-center">
+                    <h2 class="section-heading">Nós temos o que você precisa!</h2>
+                    <hr class="light">
+                    <p class="text-faded">Projeta Fácil tem tudo que você precisa para fazer o orçamento do seu projeto, uma estrutura de informações claras e objetivas. Facilidade em criar suas composições, codificação em BIM e o principal: LOCAIS DE COMPRAS.</p>
+                    <a href="#services" class="page-scroll btn btn-default btn-xl sr-button">Saiba mais!</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="services">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <h2 class="section-heading">Nosso Sistema</h2>
+                    <hr class="primary">
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3 col-md-6 text-center">
+                    <div class="service-box">
+                        <i class="fa fa-4x fa-hand-peace-o text-primary sr-icons"></i>
+                        <h3>Orçamento</h3>
+                        <p class="text-muted">Orçamento estruturado por Etapa e Sub etapa, trazendo clareza e organização nas informações dos serviços orçados. Detalhamento dos serviços, agrupamento dos insumos em comum, gerando assim uma lista de fácil compreensão.</p>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 text-center">
+                    <div class="service-box">
+                        <i class="fa fa-4x fa-puzzle-piece text-primary sr-icons"></i>
+                        <h3>Composições de Serviços</h3>
+                        <p class="text-muted">Temos serviços compostos segundo as melhores literaturas e tabelas de composições. Também é possível criar suas composições de uma maneira rápida e simples.</p>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 text-center">
+                    <div class="service-box">
+                        <i class="fa fa-4x fa-suitcase text-primary sr-icons"></i>
+                        <h3>Mão de Obra</h3>
+                        <p class="text-muted">Temos os principais cargos da construção civil cadastrados em nosso sistema, todas com sua base salarial segundo o sindicato já com suas leis sociais calculadas segundo CLT.</p>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 text-center">
+                    <div class="service-box">
+                        <i class="fa fa-4x fa-money text-primary sr-icons"></i>
+                        <h3>Materiais</h3>
+                        <p class="text-muted">Temos integração com vários fornecedores e distribuidores!</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="no-padding" id="portfolio">
+        <div class="container-fluid">
+            <div class="row no-gutter popup-gallery">
+                <div class="col-lg-4 col-sm-6">
+                    <a href="img/portfolio/fullsize/1.jpg" class="portfolio-box">
+                        <img src="img/portfolio/thumbnails/1.jpg" class="img-responsive" alt="">
+                        <div class="portfolio-box-caption">
+                            <div class="portfolio-box-caption-content">
+                                <div class="project-category text-faded">
+                                    Arquitetos
+                                </div>
+                                <div class="project-name">
+                                   Podem modelar seus projetos com BIM no Revit ter as composiçoes no seu projeto e com as informações do Orçamento
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-lg-4 col-sm-6">
+                    <a href="img/portfolio/fullsize/2.jpg" class="portfolio-box">
+                        <img src="img/portfolio/thumbnails/2.jpg" class="img-responsive" alt="">
+                        <div class="portfolio-box-caption">
+                            <div class="portfolio-box-caption-content">
+                                <div class="project-category text-faded">
+                                    Engenheiros, mestres de obra, e muito mais...
+                                </div>
+                                <div class="project-name">
+                                    Equipe multidisciplinar à disposição da sua obra/projeto, com preços reais e atualizados de acordo com o mercado.
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-lg-4 col-sm-6">
+                    <a href="img/portfolio/fullsize/3.jpg" class="portfolio-box">
+                        <img src="img/portfolio/thumbnails/3.jpg" class="img-responsive" alt="">
+                        <div class="portfolio-box-caption">
+                            <div class="portfolio-box-caption-content">
+                                <div class="project-category text-faded">
+                                    Composição de Serviço
+                                </div>
+                                <div class="project-name">
+                                   Composições TCPO, SINAPI e Própria
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-lg-4 col-sm-6">
+                    <a href="img/portfolio/fullsize/4.jpg" class="portfolio-box">
+                        <img src="img/portfolio/thumbnails/4.jpg" class="img-responsive" alt="">
+                        <div class="portfolio-box-caption">
+                            <div class="portfolio-box-caption-content">
+                                <div class="project-category text-faded">
+                                    Orçamento
+                                </div>
+                                <div class="project-name">
+                                    Veja uma lista detalhada de insumos de materiais, mãos de obra, e equipamentos no seu orçamento, com locais de compra, custo e muito mais...
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-lg-4 col-sm-6">
+                    <a href="img/portfolio/fullsize/5.jpg" class="portfolio-box">
+                        <img src="img/portfolio/thumbnails/5.jpg" class="img-responsive" alt="">
+                        <div class="portfolio-box-caption">
+                            <div class="portfolio-box-caption-content">
+                                <div class="project-category text-faded">
+                                    Faça parte da equipe!
+                                </div>
+                                <div class="project-name">
+                                    Oportunidades...
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-lg-4 col-sm-6">
+                    <a href="img/portfolio/fullsize/6.jpg" class="portfolio-box">
+                        <img src="img/portfolio/thumbnails/6.jpg" class="img-responsive" alt="">
+                        <div class="portfolio-box-caption">
+                            <div class="portfolio-box-caption-content">
+                                <div class="project-category text-faded">
+                                    Projeta Fácil
+                                </div>
+                                <div class="project-name">
+                                   www.projetafacil.com | da Internet para sua construção.
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <aside class="bg-dark">
+        <div class="container text-center">
+            <div class="call-to-action">
+                <h2>Faça parte desse Projeto você também!</h2>
+                <a href="http://projetafacil.com/index" class="btn btn-default btn-xl sr-button">Cadastre-se Agora!</a>
+            </div>
+        </div>
+    </aside>
+
+
+<section id="planos">
+	<div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+		<!-- Indicators -->
+		<ol class="carousel-indicators">
+			<li data-target="#carousel-example-generic" data-slide-to="0"  class="active"></li>
+			<li data-target="#carousel-example-generic" data-slide-to="1"></li>
+			<li data-target="#carousel-example-generic" data-slide-to="2"></li>
+		</ol>
+		<!-- CONTEUDO DOS SLIDES -->
+		<div class="carousel-inner" role="listbox">
+			<div class="item active"> 
+				<!-- Inicio Plano Free -->
+				<div class="container">
+					<div class="col-lg-12 text-center">
+						<div class="navy-line"></div>
+						<h2>Planos para Projetistas e Engenheiros</h2>
+					</div>
+<!-- 					<div class="row"> -->
+<!-- 						<div class="col-lg-4 wow zoomIn"> -->
+<!-- 							<ul class="pricing-plan list-unstyled"> -->
+<!-- 								<li class="pricing-title">FREE<h2>...</h2></li> -->
+<!-- 								<li class="pricing-desc"><b>Para acadêmicos, pequenos projetos e demandas pontuais.</b> -->
+<!-- 								</li> -->
+<!-- 								<li>...</li> -->
+<!-- 								<li>...</li> -->
+<!-- 								<li>1 Usuário</li> -->
+<!-- 								<li>Gestão limitada de Projetos e Versões</li> -->
+<!-- 								<li>Geração limitada de Métricas</li> -->
+<!-- 								<li>...</li> -->
+<!-- 								<li>...</li> -->
+<!-- 								<li>...</li> -->
+<!-- 							</ul> -->
+<!-- 							<div class="text-center"> -->
+<!-- 								<a class="btn btn-primary btn-xs" onclick="redirecionarCadastrar(1)" href="#">Quero iniciar!</a> -->
+<!-- 							</div> -->
+<!-- 						</div> -->
+<!-- 						Fim Plano Free -->
+<!-- 						Inicio Plano Start -->
+<!-- 						<div class="col-lg-4 wow zoomIn"> -->
+<!-- 							<ul class="pricing-plan list-unstyled"> -->
+<!-- 								<li class="pricing-title"> START <h2>R$ 89,00 /mês</h2></li> -->
+<!-- 								<li class="pricing-desc"><b>Para pequenas empresas e equipes de desenvolvimento de software.</b> -->
+<!-- 								</li> -->
+<!-- 								<li>...</li> -->
+<!-- 								<li>...</li> -->
+<!-- 								<li><b>Atendimento Completo</b> com 1 hora de Consultoria por mês </li> -->
+<!-- 								<li>1 Usuário</li> -->
+<!-- 								<li>Gestão <b>ilimitada</b> de Projetos e Versões -->
+<!-- 								</li> -->
+<!-- 								<li>Gestão <b>ilimitada</b> de Métricas -->
+<!-- 								</li> -->
+<!-- 								<li>...</li> -->
+<!-- 								<li>...</li> -->
+<!-- 								<li>...</li> -->
+<!-- 							</ul> -->
+<!-- 							<div class="text-center"> -->
+<!-- 								<a class="btn btn-primary btn-xs" -->
+<!-- 								onclick="redirecionarCadastrar(3)" href="#">Quero testar por 15 dias!</a> -->
+<!-- 							</div> -->
+<!-- 						</div> -->
+<!-- 						Fim Plano Start -->
+<!-- 						Inicio Plano Pro -->
+<!-- 						<div class="col-lg-4 wow zoomIn"> -->
+<!-- 							<ul class="pricing-plan list-unstyled"> -->
+<!-- 								<li class="pricing-title"> -->
+<!-- 								        PRO -->
+<!-- 									<h2>R$ 490,00 /mês</h2> -->
+<!-- 								</li> -->
+<!-- 								<li class="pricing-desc"><b>Para grandes empresas e -->
+<!-- 									equipes de desenvolvimento de software.</b> -->
+<!-- 								</li> -->
+<!-- 								<li><b>Atendimento VIP</b> com 4 horas de Consultoria por mês </li> -->
+<!-- 								<li>Suporte via Skype</li> -->
+<!-- 								<li>5 Usuários</li> -->
+<!-- 								<li>Gestão <b>ilimitada</b> de Projetos e Versões </li> -->
+<!-- 								<li>Geração <b>ilimitada</b> de Métricas </li> -->
+<!-- 								<li>Geração <b>ilimitada</b> de Baselines </li> -->
+<!-- 								<li>Relatórios Gerenciais</li> -->
+<!-- 								<li>Gerador de Propostas Comerciais</li> -->
+<!-- 							</ul> -->
+<!-- 							<div class="text-center"> -->
+<!-- 								<a class="btn btn-primary btn-xs" onclick="redirecionarCadastrar(2)" href="#">Quero testar or 15 dias!</a> -->
+<!-- 							</div> -->
+<!-- 						</div> -->
+<!-- 					</div> -->
+				</div>
+				<!-- Fim Plano Start -->
+			</div>
+
+
+
+			<div class="item"> 
+				
+				<!-- Inicio Plano Free -->
+				<div class="container">
+					<div class="col-lg-12 text-center">
+						<div class="navy-line"></div>
+						<h2>Planos para Fornecedores de Material</h2>
+					</div>
+<!-- 					<div class="row"> -->
+<!-- 						<div class="col-lg-4 wow zoomIn"> -->
+<!-- 							<ul class="pricing-plan list-unstyled"> -->
+<!-- 								<li class="pricing-title"> -->
+<!-- 									GRÁTIS -->
+<!-- 									<h2>...</h2> -->
+<!-- 								</li> -->
+<!-- 								<li class="pricing-desc"><b>Para fornecedores, depósitos, varejistas, fabriacantes</b> -->
+<!-- 								</li> -->
+<!-- 								<li>...</li> -->
+<!-- 								<li>...</li> -->
+<!-- 								<li>1 Usuário</li> -->
+<!-- 								<li>Perfil</li> -->
+<!-- 								<li>Cadastro de Materiais</li> -->
+<!-- 								<li>Atualização de Preço</li> -->
+<!-- 								<li>Importação de Materiais com Atualização de preço</li> -->
+<!-- 								<li>...</li> -->
+<!-- 							</ul> -->
+<!-- 							<div class="text-center"> -->
+<!-- 								<a class="btn btn-primary btn-xs" -->
+<!-- 								onclick="redirecionarCadastrar(1)" href="#">Quero iniciar!</a> -->
+<!-- 							</div> -->
+<!-- 						</div> -->
+<!-- 						Fim Plano Free -->
+<!-- 						Inicio Plano Start -->
+<!-- 						<div class="col-lg-4 wow zoomIn"> -->
+<!-- 							<ul class="pricing-plan list-unstyled"> -->
+<!-- 								<li class="pricing-title"> -->
+<!-- 									VENDA MAIS -->
+<!-- 									<h2>R$ 59,00 /mês</h2> -->
+<!-- 								</li> -->
+<!-- 								<li class="pricing-desc"><b>Para fornecedores, depósitos, varejistas, fabriacantes</b> -->
+<!-- 								</li> -->
+<!-- 								<li>...</li> -->
+<!-- 								<li>1 Usuário</li> -->
+<!-- 								<li>Perfil</li> -->
+<!-- 								<li>Cadastro de Materiais</li> -->
+<!-- 								<li>Atualização de Preço</li> -->
+<!-- 								<li>Importação de Materiais com Atualização de preço</li> -->
+<!-- 								<li>Seu material e local de compra em primeiro lugar</li> -->
+<!-- 								<li>...</li> -->
+<!-- 							</ul> -->
+<!-- 							<div class="text-center"> -->
+<!-- 								<a class="btn btn-primary btn-xs" -->
+<!-- 								onclick="redirecionarCadastrar(3)" href="#">Quero testar -->
+<!-- 								por 15 dias!</a> -->
+<!-- 							</div> -->
+<!-- 						</div> -->
+<!-- 					</div> -->
+				</div>
+				<!-- Fim Plano Start -->
+			</div>
+
+
+
+			<div class="item"> 
+				<!-- INICIO PLANO FORNECEDOR DE MÃO DE OBRA -->
+				<div class="container">
+					<div class="col-lg-12 text-center">
+						<div class="navy-line"></div>
+						<h2>Planos para Fornecedores de Mão de Obra</h2>
+					</div>
+<!-- 					<div class="row"> -->
+<!-- 						<div class="col-lg-4 wow zoomIn"> -->
+<!-- 							<ul class="pricing-plan list-unstyled"> -->
+<!-- 								<li class="pricing-title"> -->
+<!-- 									FREE -->
+<!-- 									<h2>...</h2> -->
+<!-- 								</li> -->
+<!-- 								<li class="pricing-desc"><b>Para acadêmicos, pequenos -->
+<!-- 									projetos e demandas pontuais.</b> -->
+<!-- 								</li> -->
+<!-- 								<li>...</li> -->
+<!-- 								<li>...</li> -->
+<!-- 								<li>1 Usuário</li> -->
+<!-- 								<li>Gestão limitada de Projetos e Versões</li> -->
+<!-- 								<li>Geração limitada de Métricas</li> -->
+<!-- 								<li>...</li> -->
+<!-- 								<li>...</li> -->
+<!-- 								<li>...</li> -->
+<!-- 							</ul> -->
+<!-- 							<div class="text-center"> -->
+<!-- 								<a class="btn btn-primary btn-xs" -->
+<!-- 								onclick="redirecionarCadastrar(1)" href="#">Quero iniciar!</a> -->
+<!-- 							</div> -->
+<!-- 						</div> -->
+<!-- 						Fim Plano Free -->
+<!-- 						Inicio Plano Start -->
+<!-- 						<div class="col-lg-4 wow zoomIn"> -->
+<!-- 							<ul class="pricing-plan list-unstyled"> -->
+<!-- 								<li class="pricing-title"> -->
+<!-- 									START -->
+<!-- 									<h2>R$ 89,00 /mês</h2> -->
+<!-- 								</li> -->
+<!-- 								<li class="pricing-desc"><b>Para pequenas empresas e -->
+<!-- 									equipes de desenvolvimento de software.</b> -->
+<!-- 								</li> -->
+<!-- 								<li>...</li> -->
+<!-- 								<li>...</li> -->
+<!-- 								<li><b>Atendimento Completo</b> com 1 hora de Consultoria -->
+<!-- 									por mês -->
+<!-- 								</li> -->
+<!-- 								<li>1 Usuário</li> -->
+<!-- 								<li>Gestão <b>ilimitada</b> de Projetos e Versões -->
+<!-- 								</li> -->
+<!-- 								<li>Gestão <b>ilimitada</b> de Métricas -->
+<!-- 								</li> -->
+<!-- 								<li>...</li> -->
+<!-- 								<li>...</li> -->
+<!-- 								<li>...</li> -->
+<!-- 							</ul> -->
+<!-- 							<div class="text-center"> -->
+<!-- 								<a class="btn btn-primary btn-xs" -->
+<!-- 								onclick="redirecionarCadastrar(3)" href="#">Quero testar -->
+<!-- 								por 15 dias!</a> -->
+<!-- 							</div> -->
+<!-- 						</div> -->
+<!-- 						Fim Plano Start -->
+<!-- 						Inicio Plano Pro -->
+<!-- 						<div class="col-lg-4 wow zoomIn"> -->
+<!-- 							<ul class="pricing-plan list-unstyled"> -->
+<!-- 								<li class="pricing-title"> -->
+<!-- 									PRO -->
+<!-- 									<h2>R$ 490,00 /mês</h2> -->
+<!-- 								</li> -->
+<!-- 								<li class="pricing-desc"><b>Para grandes empresas e -->
+<!-- 									equipes de desenvolvimento de software.</b> -->
+<!-- 								</li> -->
+<!-- 								<li><b>Atendimento VIP</b> com 4 horas de Consultoria por -->
+<!-- 									mês -->
+<!-- 								</li> -->
+<!-- 								<li>Suporte via Skype</li> -->
+<!-- 								<li>5 Usuários</li> -->
+<!-- 								<li>Gestão <b>ilimitada</b> de Projetos e Versões -->
+<!-- 								</li> -->
+<!-- 								<li>Geração <b>ilimitada</b> de Métricas -->
+<!-- 								</li> -->
+<!-- 								<li>Geração <b>ilimitada</b> de Baselines -->
+<!-- 								</li> -->
+<!-- 								<li>Relatórios Gerenciais</li> -->
+<!-- 								<li>Gerador de Propostas Comerciais</li> -->
+<!-- 							</ul> -->
+<!-- 							<div class="text-center"> -->
+<!-- 								<a class="btn btn-primary btn-xs" -->
+<!-- 								onclick="redirecionarCadastrar(2)" href="#">Quero testar -->
+<!-- 								por 15 dias!</a> -->
+<!-- 							</div> -->
+<!-- 						</div> -->
+<!-- 					</div> -->
+				</div>
+				<!-- Fim Plano Start -->
+			</div>
+
+
+		</div>
+		<!-- Controls -->
+		<a class="left carousel-control" href="#carousel-example-generic"
+		role="button" data-slide="prev"> <span
+		class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+		<span class="sr-only">Previous</span>
+	</a> <a class="right carousel-control" href="#carousel-example-generic"
+	role="button" data-slide="next"> <span
+	class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+	<span class="sr-only">Next</span>
+</a>
+</div>
+</section>
+
+
+
+
+	<section id="contact">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 text-center">
+                    <h2 class="section-heading">Entre em contato conosco!</h2>
+                    <hr class="primary">
+                    <p>Comece seu próximo projeto conosco, isto será ótimo e fácil! Nos ligue ou mande um email e nós retornaremos para você assim que possível!</p>
+                </div>
+                <div class="col-lg-4 col-lg-offset-2 text-center">
+                    <i class="fa fa-mobile-phone fa-3x sr-contact"></i>
+                    <p>67 99163-8686</p>
+                </div>
+                <div class="col-lg-4 text-center">
+                    <i class="fa fa-envelope-o fa-3x sr-contact"></i>
+                    <p><a href="mailto:your-email@your-domain.com">projetaf@gmail.com</a></p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- jQuery -->
+    <script src="vendor/jquery/jquery.min.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+    
+
+    <!-- Plugin JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
+    <script src="vendor/scrollreveal/scrollreveal.min.js"></script>
+    <script src="vendor/magnific-popup/jquery.magnific-popup.min.js"></script>
+
+    <!-- Theme JavaScript -->
+    <script src="js/creative.min.js"></script>
+
+</body>
+
+</html>

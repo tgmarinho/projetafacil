@@ -1,0 +1,3 @@
+INSERT INTO usuario(id, ativo, email, nome, senha, tipo_usuario) VALUES (3,true,'teste@livinglab.com','Living Lab - Teste','$2a$06$azDV5oprJJjUhtDQgnqhZ.k8BqCWD4S9kyhyEx7CbHeYlYQgHc1Bi', 'ORCAMENTISTA');
+INSERT INTO perfil(id, tipo_pessoa, cargo, id_usuario) VALUES (3,'JURIDICA', 'Testador do Projeta Facil - LL', 3);
+INSERT INTO usuario_grupo VALUES (3,4);

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" 
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+   layout:decorate="~{layout/LayoutPadrao}">
+
+<head>
+	<title>Importação de Insumo do SINAPI</title>
+</head>
+
+<section layout:fragment="conteudo">
+   
+  <div class="page-header">
+		<div class="container-fluid">
+			<div class="row">
+				<div class="col-xs-10">
+					<h1>Importação de Insumos</h1>
+				</div>
+			</div>
+		</div>
+	</div>
+   
+   
+   <div class="container-fluid">
+	<th:block th:include="fragments/MensagemSucesso"></th:block>
+	<th:block th:include="fragments/MensagemGeral"></th:block>
+   
+    <form class="form-horizontal" method="POST" th:action="@{/importacao/importar}" th:object="${importacaoFilter}">
+    	
+    	<th:block th:include="fragments/MensagensErroValidacao"></th:block>
+    		
+				
+				<div class="form-group">
+					<label for="nome" class="col-sm-1 control-label">Link do Zip</label>
+					<div class="col-sm-11">  
+						<input type="text" class="form-control"	id="nome" th:field="*{urlCompleta}" placeholder="http://www.caixa.gov.br/Downloads/sinapi-a-partir-jul-2009-ms/SINAPI_ref_Insumos_Composicoes_MS_052017_Desonerado.zip" autofocus="autofocus"/>
+					</div>
+				</div>
+				
+			
+				<div class="form-group">
+					<div class="col-sm-offset-1 col-sm-10">
+						<button type="submit" class="btn btn-primary">Importar</button>
+					</div>
+				</div>
+    	
+    </form>
+    
+     </div>
+</section>
+</html>

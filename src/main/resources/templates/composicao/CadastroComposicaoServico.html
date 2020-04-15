@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout/LayoutPadrao}"
+      xmlns:brewer="http://brewer.algaworks.com"
+      xmlns:data="http://www.thymeleaf.org/extras/data">
+
+<head>
+    <title>Criação da Composição</title>
+
+    <link rel="stylesheet" th:href="@{/css/vendors/easy-autocomplete.min.css}"/>
+    <link rel="stylesheet" th:href="@{/css/vendors/easy-autocomplete.themes.min.css}"/>
+</head>
+
+<section layout:fragment="conteudo">
+
+    <div class="page-header">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-xs-10">
+                    <h1 th:if="${composicaoServico.nova}">Criação da Composição</h1>
+                    <h1 th:unless="${composicaoServico.nova}" id="labelCodigoServicoComposicao"
+                        th:text="|Edição da Composição do Serviço: Código: ${composicaoServico.codigoInteiro}|">Edição da composição nº 12</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container-fluid">
+
+        <form method="POST" th:action="@{/composicoes/nova}" th:object="${composicaoServico}" class="js-formulario-principal">
+            <brewer:message/>
+
+            <input type="hidden" id="uuid" th:field="*{uuid}"/>
+            <input type="hidden" th:field="*{id}"/>
+            <input type="hidden" th:field="*{usuario.id}"/>
+            <input type="hidden" th:field="*{codigo}"/>
+
+            <div class="row">
+                <div class="form-group col-sm-8 bw-required" th:classappend="${#fields.hasErrors('classe')} ? has-error">
+                    <label class="control-label" for="classe">Classe</label>
+                    <select id="classe" class="form-control js-etapa" th:field="*{classe}" autofocus="autofocus">
+                        <option value="">Selecione uma Classe</option>
+                        <option th:each="classe : ${classes}" th:value="${classe.id}" th:text="|${classe.sigla} - ${classe.nome}|">Classe</option>
+                    </select>
+                </div>
+
+                <div class="form-group col-sm-4 bw-required js-container-referencia" th:classappend="${#fields.hasErrors('referencia')} ? has-error">
+                    <label class="control-label" for="referencia">Referência</label>
+                    <div>
+                        <select id="referencia" class="form-control" th:field="*{referencia}" autofocus="autofocus">
+                            <option th:each="ref : ${referencias}" th:value="${ref}" th:text="${ref.descricao}">TCPO</option>
+                        </select>
+
+                        <!--<div class="form-group col-sm-2 js-container-codigobim" th:classappend="${#fields.hasErrors('codigoBIM')} ? has-error">-->
+                        <!--<label for="codigoBIM" class="control-label">Código BIM</label>-->
+                        <!--<input type="text" class="form-control js-codigobim-servico" id="codigoBIM" placeholder="Apenas para TCPO e SINAPI" th:field="*{codigoBIM}" />-->
+                        <!--</div>-->
+                    </div>
+                    <!--<div th:if="${#strings.equals(#authentication.principal.usuario.tipoUsuario, 'ORCAMENTISTA')}">
+                           <select id="referencia_usuario" class="form-control" th:field="*{referencia}" autofocus="autofocus">
+                             <option th:each="refa : ${referenciaPropia}" th:value="${refa}" th:text="${refa.descricao}">TCPO</option>
+                        </select>
+                    </div> -->
+                </div>
+            </div>
+
+            <div class="row">
+
+                <div class="form-group col-sm-8 bw-required" th:classappend="${#fields.hasErrors('nome')} ? has-error">
+                    <label for="nomeServico" class="control-label bw-required">Nome</label>
+                    <input type="text" class="form-control bw-required js-nome-servico" placeholder="Informe o nome do serviço" id="nomeServico" th:field="*{nome}"/>
+                </div>
+
+                <div class="form-group col-sm-4 bw-required" th:classappend="${#fields.hasErrors('unidade')} ? has-error">
+                    <label for="unidade" class="control-label">Unidade</label>
+                    <select class="form-control" id="unidade" th:field="*{unidade}">
+                        <option th:each="unidade : ${unidades}"
+                                th:value="${unidade}" th:text="${unidade.descricao}">
+                        </option>
+                    </select>
+                </div>
+
+            </div>
+
+
+            <div class="panel-group">
+
+
+                <h3><span class="label label-primary">Selecione o Insumo ou Composição que irá inserir e faça a busca</span></h3>
+                <div id="radioTipoInsumo" class="form-group">
+
+                    <label class="radio-inline">
+                        <input type="radio" th:name="tipoInsumoPesquisar" th:value="Insumo" checked> <span class="negrito">Insumo</span>
+                    </label>
+
+                    <label class="radio-inline">
+                        <input type="radio" th:name="tipoInsumoPesquisar" th:value="ComposicaoServico"> <span class="negrito">Composição</span>
+                    </label>
+                </div>
+
+
+                <input type="text" class="col-sm-12 js-nome-codigobim-input" id="round"
+                       placeholder="Pesquise e adicione o Insumo informando o Nome do Insumo: Material, Equipamento, Mão de Obra ou Composição" autofocus="autofocus"
+                       data:url="@{/composicoes}"/>
+
+            </div>
+
+            <div class="js-tabela-insumos-container">
+                <th:block th:replace="composicao/TabelaItensComposicao"/>
+            </div>
+
+
+            <div class="row" style="clear: both" id="botao-acao">
+                <div class="col-lg-12">
+                    <button type="submit" class="btn  btn-primary  js-submit-btn" data:acao="salvar">Salvar</button>
+                </div>
+            </div>
+        </form>
+    </div>
+
+</section>
+<!-- Java Script Extras  -->
+<th:block layout:fragment="javascript-extra">
+    <script th:src="@{/js/vendors/jquery.easy-autocomplete.min.js}"></script>
+    <script th:src="@{/js/composicao-servico.autocomplete-itens.js}"></script>
+    <script th:src="@{/js/composicao-servico.tabela-itens.js}"></script>
+    <script th:src="@{/js/composicao-servico.js}"></script>
+</th:block>
+
+</html>

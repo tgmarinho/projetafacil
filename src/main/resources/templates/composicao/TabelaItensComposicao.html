@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="pt" xmlns="http://www.w3.org/1999/xhtml" 
+	  xmlns:th="http://www.thymeleaf.org"
+	  xmlns:data="http://www.thymeleaf.org/extras/data">
+		   
+		   	<!-- Insumo -->
+		   	
+	 		<div class="table-responsive bw-tabela-simples js-tabela-item"  >
+		   		<table id="material-table" th:name="material-table" class="table  table-hover table-striped">
+					<thead>
+						<tr>
+		   					<td colspan="5" class="text-center negrito">INSUMOS: Material, Mão de Obra e Equipamento</td>
+		   				</tr>
+						<tr>
+							<th class="col-xs-1">#</th>
+							<th class="col-xs-1">Tipo</th>
+							<th class="col-xs-7">Nome</th> 
+							<th class="col-xs-1">Unidade</th>
+							<th class="bw-required col-xs-2">Coeficiente (Qtde)</th>
+							<th class="table-col-acoes col-xs-1"></th>
+						</tr>
+					</thead>
+					<tbody>
+					
+						<tr id="linhaComMateriais" class="comMaterial" th:each="item : ${itemInsumo}">
+							<th:block th:unless="${item.insumo} == null">
+								<td th:text="${itemStat.index} + 1">1</td>
+								<td th:text="${item.insumo.tipo}"></td>
+								<td th:text="${item.insumo.nome}"></td>
+								<td th:text="${item.insumo.unidade.descricao}"></td>
+								<td>
+									<input type="text" th:value="${item.valorCoeficiente}" class="js-tabela-composicao-coeficiente-item js-coeficiente form-control"
+															data:idinsumo="${item.insumo.id}" data:tipoinsumo="Insumo" />
+								</td>
+								<td >
+									<a class="btn  btn-link  btn-xs  js-tooltip  js-exclusao-item-btn" title="Excluir" href="#"
+																data:idinsumo="${item.insumo.id}" data:tipoinsumo="Insumo">
+										<i class="glyphicon glyphicon-remove"></i>
+									</a>
+								</td>
+							</th:block>
+		   				</tr>
+		   				
+		   				<tr>
+		   					<td colspan="5" th:if="${#lists.isEmpty(itemComposicao)}">Nenhum insumo foi adicionado</td>
+		   				</tr>
+					</tbody>
+				</table>
+				</div>
+				
+				
+				<br/>
+				<br/>
+				
+				
+				<!--  Composição  -->
+		   		
+		   		<div  class="table-responsive bw-tabela-simple">
+					<table id="composicao-table" th:name="composicao-table" class="table table-hover">
+						<thead>
+							<tr>
+								<td colspan="6" class="text-center negrito">COMPOSIÇÕES</td>
+							</tr>
+							<tr>
+								<th>#</th>
+								<th>Nome</th>
+								<th>Unidade</th>
+								<th>Código BIM</th>
+								<th>Coeficiente (Qtde)</th>
+								<th class="table-col-acoes"></th>
+							</tr>
+						</thead>
+						<tbody>
+
+							<tr id="linhaComComposicoes" class="comComposicao" th:each="item : ${itemComposicao}">
+								<th:block th:unless="${item.composicaoDaComposicao} == null">
+                                    <td th:text="${itemStat.index} + 1">1</td>
+                                    <td th:text="${item.composicaoDaComposicao.nome}"></td>
+                                    <td th:text="${item.composicaoDaComposicao.unidade.descricao}"></td>
+                                    <td th:text="${item.composicaoDaComposicao.codigoBIM}"></td>
+                                    <td>
+                                        <input type="text" th:value="${{item.valorCoeficiente}}" class="js-tabela-composicao-coeficiente-item form-control"
+                                                    data:idinsumo="${item.composicaoDaComposicao.id}" data:tipoinsumo="ComposicaoServico" />
+                                    </td>
+                                    <td>
+                                        <a class="btn  btn-link  btn-xs  js-tooltip  js-exclusao-item-btn" title="Excluir" href="#"
+                                                    data:idinsumo="${item.composicaoDaComposicao.id}" data:tipoinsumo="ComposicaoServico">
+                                            <i class="glyphicon glyphicon-remove"></i>
+                                        </a>
+                                    </td>
+                                </th:block>
+							</tr>
+
+							<tr>
+								<td colspan="6" th:if="${#lists.isEmpty(itemComposicao)}">Nenhuma composição foi adicionada</td>
+							</tr>
+
+						</tbody>
+					</table>
+				</div>
+				
+</html>

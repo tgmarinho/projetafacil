@@ -1,0 +1,360 @@
+/*
+######################
+# UTILIDADES / CHECKBOXES
+# https://bootsnipp.com/snippets/featured/fancy-bootstrap-checkboxes
+######################
+*/
+
+.form-group input[type="checkbox"] {
+    display: none;
+}
+
+.form-group input[type="checkbox"] + .btn-group > label span {
+    width: 15px;
+}
+
+.form-group input[type="checkbox"] + .btn-group > label span:first-child {
+    display: none;
+}
+.form-group input[type="checkbox"] + .btn-group > label span:last-child {
+    display: inline-block;   
+}
+
+.form-group input[type="checkbox"]:checked + .btn-group > label span:first-child {
+    display: inline-block;
+}
+.form-group input[type="checkbox"]:checked + .btn-group > label span:last-child {
+    display: none;   
+}
+
+
+
+
+
+/*
+radio
+*/
+.funkyradio label {
+    /*min-width: 400px;*/
+    width: 100%;
+    border-radius: 3px;
+    border: 1px solid #D1D3D4;
+    font-weight: normal;
+}
+.funkyradio input[type="radio"]:empty, .funkyradio input[type="checkbox"]:empty {
+    display: none;
+}
+.funkyradio input[type="radio"]:empty ~ label, .funkyradio input[type="checkbox"]:empty ~ label {
+    position: relative;
+    line-height: 2.5em;
+    text-indent: 3.25em;
+    margin-top: 2em;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+.funkyradio input[type="radio"]:empty ~ label:before, .funkyradio input[type="checkbox"]:empty ~ label:before {
+    position: absolute;
+    display: block;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    content:'';
+    width: 2.5em;
+    background: #D1D3D4;
+    border-radius: 3px 0 0 3px;
+}
+.funkyradio input[type="radio"]:hover:not(:checked) ~ label:before, .funkyradio input[type="checkbox"]:hover:not(:checked) ~ label:before {
+    content:'\2714';
+    text-indent: .9em;
+    color: #C2C2C2;
+}
+.funkyradio input[type="radio"]:hover:not(:checked) ~ label, .funkyradio input[type="checkbox"]:hover:not(:checked) ~ label {
+    color: #888;
+}
+.funkyradio input[type="radio"]:checked ~ label:before, .funkyradio input[type="checkbox"]:checked ~ label:before {
+    content:'\2714';
+    text-indent: .9em;
+    color: #333;
+    background-color: #ccc;
+}
+.funkyradio input[type="radio"]:checked ~ label, .funkyradio input[type="checkbox"]:checked ~ label {
+    color: #777;
+}
+.funkyradio input[type="radio"]:focus ~ label:before, .funkyradio input[type="checkbox"]:focus ~ label:before {
+    box-shadow: 0 0 0 3px #999;
+}
+.funkyradio-default input[type="radio"]:checked ~ label:before, .funkyradio-default input[type="checkbox"]:checked ~ label:before {
+    color: #333;
+    background-color: #ccc;
+}
+.funkyradio-primary input[type="radio"]:checked ~ label:before, .funkyradio-primary input[type="checkbox"]:checked ~ label:before {
+    color: #fff;
+    background-color: #337ab7;
+}
+.funkyradio-success input[type="radio"]:checked ~ label:before, .funkyradio-success input[type="checkbox"]:checked ~ label:before {
+    color: #fff;
+    background-color: #5cb85c;
+}
+.funkyradio-danger input[type="radio"]:checked ~ label:before, .funkyradio-danger input[type="checkbox"]:checked ~ label:before {
+    color: #fff;
+    background-color: #d9534f;
+}
+.funkyradio-warning input[type="radio"]:checked ~ label:before, .funkyradio-warning input[type="checkbox"]:checked ~ label:before {
+    color: #fff;
+    background-color: #f0ad4e;
+}
+.funkyradio-info input[type="radio"]:checked ~ label:before, .funkyradio-info input[type="checkbox"]:checked ~ label:before {
+    color: #fff;
+    background-color: #5bc0de;
+}
+
+
+
+
+/*
+CSS CHECKBOX
+
+*/
+
+
+input[type=checkbox].css-checkbox {
+	position: absolute;
+	z-index: -1000;
+	left: -1000px;
+	overflow: hidden;
+	clip: rect(0, 0, 0, 0);
+	height: 1px;
+	width: 1px;
+	margin: -1px;
+	padding: 0;
+	border: 0;
+}
+
+input[type=checkbox].css-checkbox+label.css-label {
+	padding-left: 30px;
+	height: 25px;
+	display: inline-block;
+	line-height: 25px;
+	background-repeat: no-repeat;
+	background-position: 0 0;
+	font-size: 14px;
+	vertical-align: middle;
+	cursor: pointer;
+}
+
+input[type=checkbox].css-checkbox:checked+label.css-label {
+	background-position: 0 -25px;
+}
+
+label.css-label {
+	background-image: url("/images/csscheckbox_391ce065f36b1460c4845fa9b5173fba.png");
+	-webkit-touch-callout: none;
+	-webkit-user-select: none;
+	-khtml-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+}
+
+.label-criterio-orcar {
+	color: #1e94d2;
+	font-family: "Open Sans", sans-serif;
+	font-weight: bold;
+	size : 18px;
+}
+
+
+
+
+/*#########################################
+RADIO E CHECKBOX
+https://codepen.io/BrianSassaman/pen/iLrpC
+-> mui malo hahahaha
+###########################################*/
+
+
+label.btn span {
+  font-size: 1.4em ;
+}
+
+label input[type="radio"] ~ i.fa.fa-circle-o{
+    color: #c8c8c8;    display: inline;
+}
+label input[type="radio"] ~ i.fa.fa-dot-circle-o{
+    display: none;
+}
+label input[type="radio"]:checked ~ i.fa.fa-circle-o{
+    display: none;
+}
+label input[type="radio"]:checked ~ i.fa.fa-dot-circle-o{
+    color: #1e94d2;    display: inline;
+}
+label:hover input[type="radio"] ~ i.fa {
+	color: #1e94d2;
+}
+
+label input[type="checkbox"] ~ i.fa.fa-square-o{
+    color: #c8c8c8;    display: inline;
+}
+label input[type="checkbox"] ~ i.fa.fa-check-square-o{
+    display: none;
+}
+label input[type="checkbox"]:checked ~ i.fa.fa-square-o{
+    display: none;
+}
+label input[type="checkbox"]:checked ~ i.fa.fa-check-square-o{
+    color: #1e94d2;    display: inline;
+}
+label:hover input[type="checkbox"] ~ i.fa {
+	color: #7AA3CC;
+}
+
+div[data-toggle="buttons"] label.active{
+    color: #7AA3CC;
+}
+
+div[data-toggle="buttons"] label {
+	display: inline-block;
+	padding: 6px 12px;
+	margin-bottom: 0;
+	font-size: 11px;
+	font-weight: bold;
+	line-height: 2em;
+	text-align: left;
+	white-space: nowrap;
+	vertical-align: top;
+	cursor: pointer;
+	background-color: none;
+	border: 0px solid #c8c8c8;
+	border-radius: 3px;
+	color: #c8c8c8;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	-o-user-select: none;
+	user-select: none;
+}
+
+div[data-toggle="buttons"] label:hover {
+	color: #7AA3CC;
+}
+
+div[data-toggle="buttons"] label:active, div[data-toggle="buttons"] label.active {
+	-webkit-box-shadow: none;
+	box-shadow: none;
+}
+
+
+
+
+/*
+ Estilo @tgmarinho
+*/
+
+.corTextoEtapa {
+	color: blue;
+	font-weight: bold;
+}
+
+.corTextoSubEtapa {
+	color: red;
+	font-weight: bold;
+}
+
+.estilo-label--exibir {
+	padding: 6px 12px;
+	magin: 10px;
+	margin-bottom: 0;
+	font-size: 18px;
+	font-weight: bold;
+	color: #7AA3CC;
+}
+
+.estilo-checkbox--exibir { 
+  background: #7AA3CC;
+  magin: 0;
+  width: 15px;
+  height: 15px;
+  padding: 12px;
+  padding-left: 30px;
+  border-radius: 50px;
+  position: relative;
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  box-shadow: 1px 2px 5px rgba(0, 0, 0, 0.4);
+}
+
+
+
+
+
+
+
+
+
+/*
+######################################
+# CUSTOMIZAÇÃO DE COMPONENTES
+######################################
+*/
+
+.checkbox input[type="checkbox"]:checked + input + label::after {
+    font-family: 'FontAwesome';
+    content: "\f00c"; 
+}
+
+/* Easy Autocomplete */
+.easy-autocomplete input {
+	border-radius: 2px !important;
+}
+
+.easy-autocomplete-container ul li {
+	font-size: 1em !important;
+	padding: 0px 5px !important;
+}
+
+@media ( max-width : 1424px) { 
+	.estilo-label--exibir {
+		padding: 6px 12px;
+		magin: 4px;
+		margin-bottom: 0;
+		font-size: 14px;
+		font-weight: bold;
+		color: #7AA3CC;
+	}
+	.estilo-checkbox--exibir {
+		background: #7AA3CC;
+		magin: 0;
+		width: 13px;
+		height: 13px;
+		padding: 4px;
+		position: relative;
+		border: 1px solid rgba(0, 0, 0, 0.15);
+		box-shadow: 1px 2px 5px rgba(0, 0, 0, 0.4);
+	}
+}
+
+
+
+@media ( max-width : 1284) { 
+	.estilo-label--exibir {
+		padding: 6px 12px;
+		magin: 1px;
+		margin-bottom: 0;
+		font-size: 8px;
+		font-weight: bold;
+		color: #7AA3CC;
+	}
+	.estilo-checkbox--exibir {
+		display: list-item;
+		background: #7AA3CC;
+		magin: 0;
+		width: 10px;
+		height: 10px;
+		position: relative;
+		border: 1px solid rgba(0, 0, 0, 0.15);
+		box-shadow: 1px 2px 5px rgba(0, 0, 0, 0.4);
+	}
+}

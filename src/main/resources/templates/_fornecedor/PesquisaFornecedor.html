@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="pt" xmlns="http://www.w3.org/1999/xhtml" 
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{layout/LayoutPadrao}"
+	xmlns:brewer="http://brewer.algaworks.com"
+	xmlns:data="http://www.thymeleaf.org/extras/data">
+	
+<head>
+	<title>Pesquisa de fornecedores</title>
+</head>
+
+<body>
+<section layout:fragment="conteudo">
+	<div class="page-header">
+		<div class="container-fluid">
+			<div class="row">
+				<div class="col-xs-10">
+					<h1>Pesquisa de Fornecedores</h1>
+				</div>
+				
+				<div class="col-xs-2">
+					<div class="aw-page-header-controls">
+						<a class="btn  btn-default" th:href="@{/fornecedores/novo}">
+							<i class="glyphicon  glyphicon-plus-sign"></i> <span class="hidden-xs  hidden-sm">Novo fornecedor</span>
+						</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	<div class="container-fluid">
+		<form method="GET" th:object="${fornecedorFilter}">
+			<div class="row">
+				<div class="form-group  col-sm-12">
+					<label class="control-label" for="nome">Nome</label>
+					<input type="text" class="form-control" id="nome" autofocus="autofocus" th:field="*{nome}"/>
+				</div>
+				
+			</div>
+			
+			<button type="submit" class="btn  btn-primary">Pesquisar</button>
+		</form>
+		
+		<div class="table-responsive  bw-tabela-simples">
+			<table class="table  table-hover">
+				<thead>
+					<tr>
+						<th class="table-clientes-col-nome">
+							<brewer:order page="${pagina}" field="nome" text="Nome"/>
+						</th>
+						<th class="table-clientes-col-tipo-pessoa">
+							<brewer:order page="${pagina}" field="contato" text="Contato"/>
+						</th>
+						<th class="table-clientes-col-telefone">Telefone</th>
+						<th class="table-col-acoes"></th>
+					</tr>
+				</thead>
+				
+				<tbody>
+					<tr th:each="fornecedor : ${pagina.conteudo}">
+						<td th:text="${fornecedor.nome}"></td>
+						<td th:text="${fornecedor.contato}"></td>
+						<td class="text-right" th:text="${fornecedor.telefone}">(11) 99999-9999</td>
+						<td>
+		   					<a class="btn btn-link btn-xs" th:href="@{/fornecedores/{id}(id=${fornecedor.id})}" 
+		   							title="Editar" rel="tooltip" data-placement="top">
+		   						<span class="glyphicon glyphicon-pencil"></span>
+		   					</a>
+		   					
+							<a class="btn  btn-link  btn-xs  js-tooltip  js-exclusao-btn" title="Excluir" href="#" 
+								data:url="@{/fornecedores/{id}(id=${fornecedor.id})}"
+								data:objeto="${fornecedor.nome}">
+								<i class="glyphicon glyphicon-remove"></i>
+							</a>
+		   				</td>
+					</tr>
+					<tr th:if="${pagina.vazia}">
+						<td colspan="5">Nenhum cliente encontrado</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		
+		<brewer:pagination page="${pagina}"/>
+		
+	</div>
+</section>
+</body>
+</html>

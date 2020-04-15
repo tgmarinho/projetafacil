@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" 
+	  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" 
+	  xmlns:th="http://www.thymeleaf.org"
+	  xmlns:data="http://www.thymeleaf.org/extras/data" 
+ 	  xmlns:brewer="http://brewer.algaworks.com" 
+	  layout:decorate="~{layout/LayoutPadrao}">
+
+<head>
+	<title>Dashboard</title>
+</head>
+
+<section layout:fragment="conteudo">
+
+   <form method="POST" th:action="@{/perfil/salvar}" th:object="${usuario}" id="form1" role="form" data-toggle="validator" autocomplete="off">
+	<brewer:message/>
+		
+	<input type="hidden" th:field="*{perfil.id}"/>	
+	<input type="hidden" th:field="*{perfil.usuario.id}"/>	
+	<input type="hidden" th:field="*{perfil.tipoPessoa}"/>
+	<input type="hidden" th:field="*{id}"/>
+			
+
+ <div class="panel-body">
+  <h2>Meu Perfil</h2>
+  <hr>
+
+  <div>
+   <div class="row">
+    <div class="form-group col-md-6">
+     <label>
+      <input value="FISICA" name="pessoa" type="radio" id="rdl_pf" data-grupo="pessoa"
+      onclick="ProjetaFacil.Cadastro.SelecionaTipoPessoa(this);" disabled="disabled" checked="checked" th:field="*{perfil.tipoPessoa}"> Pessoa física
+     </label> <label> 
+     <input value="JURIDICA" name="pessoa" type="radio" id="rdl_pj" data-grupo="pessoa"
+      onclick="ProjetaFacil.Cadastro.SelecionaTipoPessoa(this);" disabled="disabled"  th:field="*{perfil.tipoPessoa}"> Pessoa jurídica
+     </label>
+    </div>
+   </div>
+   
+   <div class="row">
+    <div class="form-group col-md-12">
+      <div class="controls">
+       <label>Nome do Usuário</label> 
+       <input name="txt_nome" type="text" maxlength="50" id="txt_nome" class="form-control uppercase"
+        placeholder="Nome" data-pattern-error="O campo Nome deve possuir ao menos duas palavras." required pattern="(.+\s+.+)"
+        data-required-error="O campo Nome é obrigatório" th:field="*{nome}">
+      </div>
+      <div class="help-block with-errors" style="padding: 0; color: #a94442">
+       <span id="lbl_mensagem_nome"></span>
+      </div>
+     </div>
+   </div>
+   
+   
+   <!-- INICIO - Bloco para pessoa física -->
+   <div data-pessoatipo="Fisica">
+    <div class="row">
+     <div class="form-group col-md-6">
+      <div class="controls">
+       <label>CPF</label> <input name="txt_cpf" type="text" maxlength="14" id="txt_cpf" class="form-control"
+        placeholder="CPF" data-error="O campo CPF é obrigatório." required="required"
+        onkeypress="return ProjetaFacil.Cadastro.Valida.SomenteNumero();" th:field="*{perfil.cpf}">
+      </div>
+      <div class="help-block with-errors" style="padding: 0; color: #a94442">
+       <span id="lbl_mensagem_cpf"></span>
+      </div>
+     </div>
+     <div class="form-group col-md-6">
+      <div class="controls">
+       <label>Cargo</label> 
+       <input name="txt_cargo" type="text" maxlength="30" id="txt_cargo" class="form-control uppercase"
+        placeholder="Cargo" th:field="*{perfil.cargo}">
+      </div>
+      <div class="help-block with-errors" style="padding: 0; color: #a94442">
+       <span id="lbl_mensagem_cargo"></span>
+      </div>
+     </div>
+    </div>
+   </div>
+   <!-- FIM - Bloco para pessoa física -->
+   
+   <!-- INICIO - Bloco para pessoa jurídica -->
+   <div data-pessoatipo="Juridica" style="display: none">
+    <div class="row">
+     <div class="form-group col-md-6">
+      <div class="controls">
+       <label>CNPJ</label> 
+        <input name="txt_cnpj" type="text" maxlength="18" id="txt_cnpj" class="form-control"
+        	placeholder="CNPJ" data-error="O campo CNPJ é obrigatório." onkeypress="return ProjetaFacil.Cadastro.Valida.SomenteNumero();"
+       		 not-required="not-required"  th:field="*{perfil.cnpj}">
+      </div>
+      <div class="help-block with-errors" style="padding: 0; color: #a94442">
+       <span id="lbl_mensagem_cnpj"></span>
+      </div>
+     </div>
+     <div class="form-group col-md-6">
+      <div class="controls">
+       <label>Nome fantasia</label>
+       	 <input name="txt_nome_fantasia" type="text" maxlength="100" id="txt_nome_fantasia"
+       		 class="form-control uppercase" placeholder="Nome fantasia" data-error="O campo nome fantasia é obrigatório." pattern=".*\S+.*"
+        		not-required="not-required" th:field="*{perfil.nomeFantasia}">
+      </div>
+      <div class="help-block with-errors" style="padding: 0; color: #a94442">
+       <span id="lbl_mensagem_nome_fantasia"></span>
+      </div>
+     </div>
+    </div>
+    <div class="row">
+     <div class="form-group col-md-6">
+      <div class="controls">
+       <label>Razão social</label> <input name="txt_razao_social" type="text" maxlength="100" id="txt_razao_social"
+        class="form-control uppercase" placeholder="Razão social" th:field="*{perfil.razaoSocial}"
+        data-pattern-error="O campo razão social deve possuir ao menos duas palavras."
+        data-required-error="O campo razão social é obrigatório." pattern="(.+\s+.+)" not-required="not-required">
+      </div>
+      <div class="help-block with-errors" style="padding: 0; color: #a94442">
+       <span id="lbl_mensagem_razao_social"></span>
+      </div>
+     </div>
+     <div class="form-group col-md-6">
+      <div class="controls">
+       <label>Contato</label> <input name="txt_contato" type="text" maxlength="50" id="txt_contato"
+        class="form-control uppercase" placeholder="Contato" data-error="O campo contato é obrigatório." pattern=".*\S+.*"
+        not-required="not-required" th:field="*{perfil.contato}">
+      </div>
+      <div class="help-block with-errors" style="padding: 0; color: #a94442">
+       <span id="lbl_mensagem_contato"></span>
+      </div>
+     </div>
+     </div>
+     
+         <div class="row">
+     <div class="form-group col-md-6">
+      <div class="controls">
+       <label>Inscrição Municial</label> <input name="txt_inscricao_municipal" type="text" maxlength="15" id="txt_inscricao_municipal"
+        class="form-control uppercase" placeholder="Inscrição Municipal" th:field="*{perfil.inscricaoMunicipal}">
+      </div>
+      <div class="help-block with-errors" style="padding: 0; color: #a94442">
+       <span id="lbl_mensagem_inscricao_municipal"></span>
+      </div>
+     </div>
+     <div class="form-group col-md-6">
+      <div class="controls">
+       <label>Inscrição Estadual</label> <input name="txt_inscricao_estadual" type="text" maxlength="20" id="txt_inscricao_estadual"
+        class="form-control uppercase" placeholder="Inscrição Estadual" th:field="*{perfil.inscricaoEstadual}">
+      </div>
+      <div class="help-block with-errors" style="padding: 0; color: #a94442">
+       <span id="lbl_mensagem_contato"></span>
+      </div>
+     </div>
+     </div>
+     
+     
+   </div>
+   <!-- FIM - Bloco para pessoa jurídica -->
+
+   <div class="row">
+    <div class="form-group col-md-6">
+     <label class="control-label">Telefone</label>
+     <div class="controls">
+      <input name="txt_ddd" type="text" maxlength="2" id="txt_ddd" class="form-control" placeholder="DDD"
+       data-required-error="O campo DDD é obrigatório." data-pattern-error="O campo DDD é inválido" pattern="[1-9][0-9]" required="required"
+       onkeypress="return ProjetaFacil.Cadastro.Valida.SomenteNumero();" style="width: 20%; float: left; margin-right: 5%;"
+       th:field="*{perfil.telefone.dddFixo}">
+       <input name="txt_telefone" type="text" maxlength="9" id="txt_telefone" class="form-control"
+       placeholder="Telefone" data-required-error="O campo telefone é obrigatório." data-pattern-error="O campo teletone é inválido"
+       required="" onkeypress="return ProjetaFacil.Cadastro.Valida.SomenteNumero();" pattern="[0-9]{8,9}" style="width: 75%; float: left"
+       th:field="*{perfil.telefone.fixo}">
+     </div>
+     <div class="help-block with-errors" style="padding: 0; color: #a94442">
+      <span id="lbl_mensagem_telefone"></span>
+     </div>
+    </div>
+    <div class="form-group col-md-6">
+     <label class="control-label">Celular</label>
+     <div class="controls">
+      <input name="txt_ddd_opcional" type="text" maxlength="2" id="txt_ddd_opcional" class="form-control"
+       placeholder="DDD" data-error="O campo DDD é inválido" pattern="[1-9][0-9]" onkeypress="return ProjetaFacil.Cadastro.Valida.SomenteNumero();"
+       style="width: 20%; float: left; margin-right: 5%;" th:field="*{perfil.telefone.dddCelular}">
+       <input name="txt_telefone_opcional" type="text"
+       maxlength="9" id="txt_telefone_opcional" class="form-control" placeholder="Telefone" data-error="O campo teletone é inválido"
+       onkeypress="return ProjetaFacil.Cadastro.Valida.SomenteNumero();" pattern="[0-9]{8,9}" style="width: 75%; float: left"
+       th:field="*{perfil.telefone.celular}">
+     </div>
+     <div class="help-block with-errors" style="padding: 0; color: #a94442">
+      <span id="lbl_mensagem_telefone_2"></span>
+     </div>
+    </div>
+   </div>
+
+  </div>
+
+  <h3>Endereço</h3>
+  <hr>
+
+	 <div>
+   <div class="row">
+    <div class="form-group col-md-3">
+     <label class="control-label">CEP</label>
+     <div class="input-group">
+      <input name="txt_cep" type="text" maxlength="9" id="txt_cep" class="form-control"
+       data-error="O campo CEP é obrigatório." required="" th:field="*{perfil.endereco.cep}">
+      <div class="input-group-btn">
+       <button class="btn btn-primary btn-sm" type="button" onclick="ProjetaFacil.Cadastro.ConsultaCEP();">Pesquisar</button>
+      </div>
+     </div>
+     <div class="help-block with-errors" style="padding: 0; color: #a94442">
+      <span id="lbl_mensagem_cep"></span>
+     </div>
+    </div>
+   </div>
+   <div class="row">
+    <div class="form-group col-md-6">
+     <div class="controls">
+      <label class="control-label">Logradouro</label> <input name="txt_logradouro" type="text" id="txt_logradouro"
+       class="form-control" readonly="" maxlength="100" th:field="*{perfil.endereco.logradouro}">
+     </div>
+    </div>
+    <div class="form-group col-md-3">
+     <div class="controls">
+      <label class="control-label">Número</label>
+       <input name="txt_numero" type="text" maxlength="10" id="txt_numero" class="form-control" th:field="*{perfil.endereco.numero}">
+     </div>
+    </div>
+    <div class="form-group col-md-3">
+     <div class="controls">
+      <label class="control-label">Complemento</label> <input name="txt_complemento" type="text" maxlength="30"
+       id="txt_complemento" class="form-control" th:field="*{perfil.endereco.complemento}">
+     </div>
+    </div>
+   </div>
+
+   <div class="row">
+    <div class="form-group col-md-6">
+     <div class="controls">
+      <label class="control-label">Bairro</label> <input name="txt_bairro" type="text" id="txt_bairro"
+       class="form-control" readonly="" maxlength="50" th:field="*{perfil.endereco.bairro}">
+     </div>
+    </div>
+    <div class="form-group col-md-3">
+     <div class="controls">
+      <label class="control-label">Cidade</label> <input name="txt_cidade" type="text" id="txt_cidade"
+       class="form-control" readonly="" maxlength="100" th:field="*{perfil.endereco.cidade}">
+     </div>
+     <div class="help-block with-errors" style="padding: 0; color: #a94442">
+      <span id="lbl_mensagem_cidade"></span>
+     </div>
+    </div>
+    <div class="form-group col-md-3">
+     <div class="controls">
+      <label class="control-label">UF</label> 
+      <input name="txt_uf" type="text" id="txt_uf" class="form-control" readonly="" th:field="*{perfil.endereco.UF}">
+     </div>
+     <div class="help-block with-errors" style="padding: 0; color: #a94442">
+      <span id="lbl_mensagem_uf"></span>
+     </div>
+    </div>
+   </div>
+  </div>
+
+  <div class="row">
+   <div class="col-lg-2 col-lg-offset-10">
+    <input type="submit" name="btnEnviar" value="Enviar" id="btnEnviar"
+     class="btn btn-primary pull-right disabled" style="opacity: 1; cursor: pointer">
+   </div>
+  </div>
+ </div>
+</form>
+
+
+
+</section>
+<th:block layout:fragment="javascript-extra">
+ <script th:src="@{/js/vendors/validator.js}"></script>
+ <script th:src="@{/js/vendors/bootstrap-notify.js}"></script>
+ <script th:src="@{/js/fornecedorMaterial.cadastro.util.js}"></script>
+ <script th:src="@{/js/fornecedorMaterial.cadastro.js}"></script>
+ 
+
+</th:block>
+
+</html>
